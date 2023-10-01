@@ -1,0 +1,285 @@
+body {
+  background-image: url(../images/page1/space.jpeg);
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  font-family: legoFont;
+  overflow: hidden;
+}
+
+
+/* På lego klossen har jeg lagt til en 3D font ved bruk av text shadow, rotate og skewY */
+#legoHeader {
+  position: absolute;
+  top: 275px;
+  left: 900px;
+  z-index: 4;
+  color: rgb(246, 250, 8);
+  font-family: legoFont;
+  font-size: 5em;
+  transform: rotate(-17deg) skewX(-12deg);
+  text-shadow: -2px 2px #d40606, -4px 4px #d40606;
+  transform-origin: top left;
+  animation: fallingText 2s ease-in-out;
+  animation-duration: 2s;
+  animation-delay: 6s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+
+/* Lego kloss bilde med z-index for å få klossen i riktig rekkefølge (legomann under) */
+#lego {
+  position: absolute;
+  z-index: 3;
+  left: 700px;
+  top: 175px;
+  width: 450px;
+}
+
+
+/* Rister klossen med et delay */ 
+#shake {
+  animation-name: shake;
+  animation-duration: 0.5s;
+  animation-delay: 2s;
+  animation-iteration-count: 5;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+
+/* Flytende animasjon, elementene passer mer til verdensrom-tema */
+#float {
+  animation-name: floating;
+  animation-duration: 3s;
+  animation-delay: 0s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+
+/* Legofigur faller ned til neste side */
+#legoFigure {
+  position: absolute;
+  left: 900px;
+  top: 230px;
+  width: 120px;
+  animation-name: fallingdown;
+  animation-duration: 6s;
+  animation-iteration-count: 1;
+  animation-delay: 3s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+
+/* Flytende animasjon, roterer når meteoren treffer */
+#satelite {
+  position: absolute;
+  left: 1300px;
+  top: 40px;
+  animation-name: floating, rotate;
+  animation-duration: 3s, 4s;
+  animation-delay: 0s, 4s;
+  animation-iteration-count: infinite, 1;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+  margin-left: 30px;
+  margin-top: 5px;
+}
+
+
+/* Eksplosjon som er skjult, vises når meteoren treffer satelitten */
+#explotion {
+  position: absolute;
+  left: 1520px;
+  top: 120px;
+  z-index: 1;
+  animation-name: explode;
+  animation-timing-function: ease-in-out;
+  animation-duration: 500ms;
+  animation-iteration-count: 1;
+  animation-delay: 4.2s;
+
+  visibility: hidden;
+}
+
+#explotion>img {
+  width: 125px;
+}
+
+
+/* Meteoren som skytes mot satelitten */
+#meteor {
+  position: absolute;
+  top: 70px;
+  left: -250px;
+  animation-name: shoot;
+  animation-timing-function: linear;
+  animation-duration: 3.5s;
+  animation-delay: 0.8s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+#meteor>img {
+  width: 300px;
+}
+
+#satelite {
+  width: 450px;
+}
+
+
+/* Meteoren beveger seg 1650px på x-aksen, forsvinner ved treff (opacity) */
+@keyframes shoot {
+  0% {transform: translateX(0px); opacity: 1;}
+  99% { opacity: 1;}
+  100% { transform: translateX(1650px); opacity: 0;}
+}
+
+
+/* Teksten faller av lego klossen på slutten av alle animasjonene, har fått litt inspirasjon */
+@keyframes fallingText {
+  20%, 60% {transform: rotate(70deg);}
+  40%, 80% {transform: rotate(55deg); opacity: 1;}
+  100% {transform: translateY(600px); opacity: 0;}
+}
+
+
+/* Mannen falled ned 2000 px */
+@keyframes fallingdown {
+  0% {transform: translateX(0);}
+  99% {transform: translateY(2000px); opacity: 1;}
+  100% {transform: translateY(2000px); opacity: 0;}
+}
+
+
+/* Flytende */
+@keyframes floating {
+  0% {transform: translate(0, 0px);}
+  50% {transform: translate(0, 15px);}
+  100% {transform: translate(0, -0px);}
+}
+
+
+/* Rister */
+@keyframes shake {
+  0% {transform: translate(3px, 4px) rotate(0deg);}
+  10% {transform: translate(-5px, -2px) rotate(-2deg);}
+  20% {transform: translate(-2px, 4px) rotate(1deg);}
+  30% {transform: translate(3px, 1px) rotate(0deg);}
+  40% {transform: translate(2px, -4px) rotate(1deg);}
+  50% {transform: translate(-2px, 2px) rotate(-2deg);}
+  60% {transform: translate(-4px, 2px) rotate(0deg);}
+  70% {transform: translate(5px, 3px) rotate(-2deg);}
+  80% {transform: translate(-3px, -2px) rotate(1deg);}
+  90% {transform: translate(3px, 6px) rotate(0deg);}
+  100% {transform: translate(3px, -2px) rotate(-2deg);}
+}
+
+
+/* Roterer ved treff */
+@keyframes rotate {
+  0% {transform: rotate(0deg); opacity: 1;}
+  100% {transform: rotate(360deg); opacity: 0;}
+}
+
+
+/* Eksplosjon, er skjult blir synlig med delay */
+@keyframes explode {
+  0% {visibility: hidden;}
+  100% {visibility: visible;}
+}
+
+
+/* Lego font */
+@font-face {
+  font-family: legoFont;
+  src: url(../css/font/legothick.ttf);
+}
+
+
+/* next page shiat */
+@keyframes showLinkToNextPage {
+  0% {opacity: 0; z-index: -1;}
+  0.1% {opacity: 0; z-index: 99;} /* må ha 101 for å vises på side 2 */
+  100% {opacity: 1; z-index: 99;} /* må ha 101 for å vises på side 2 */
+}
+
+#linkToNextPageContainer {
+  position: absolute;
+  opacity: 0;
+  width: 2000px; /* størrelse på mørkt område */
+  height: 2000px; /* størrelse på mørkt område */
+  background-color: #00000090;
+  display: flex;
+  justify-content: center;
+  animation: showLinkToNextPage 5s 8s forwards;
+}
+
+
+/* boks for å animere scale på hover uten å påvirke bakgrunnen og posisjonen */
+#linkToNextPage {
+  position: absolute;
+  top: 500px;
+  width: 400px;
+  transition: 0.3s;
+}
+
+
+/* font style */
+#linkToNextPage>a>h2 {
+  margin: 15px 0 0 0;
+  position: absolute;
+  font-family: legoFont;
+  font-size: 36px;
+  text-align: center;
+  padding: 35px;
+  background-color: #00000090;
+  transition: 0.6s;
+  border-radius: 100px;
+  color: #9e9e9e;
+  cursor: pointer;
+  width: 350px;
+}
+
+#linkToNextPage:hover {
+  transform: scale(1.05);
+  transition: 0.3s;
+}
+
+#linkToNextPage:hover a>h2{
+  transition: 0.3s;
+  background-color: #dcd743af;
+  color: #2c2c2c;
+}
+
+
+/* Exit to main page styling */
+#exitToMainPage>img {
+  width: 30px;
+  height: 30px;
+}
+
+#exitToMainPage {
+  left: 50px;
+  opacity: 0.1;
+  cursor: pointer;
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background-color: #000000;
+  border-radius: 50px;
+  font-size: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100; /* Ekstra for å funke på min side */
+}
+
+#exitToMainPage:hover {
+  opacity: 0.7;
+}

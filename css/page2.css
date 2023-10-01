@@ -1,0 +1,1032 @@
+body {
+    background-color: rgb(20,20,20);
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.background {
+    background-image: linear-gradient(rgb(78, 187, 201), rgb(7, 17, 19)70%);
+    background-repeat: no-repeat;
+    position: absolute;
+    height: 2000px;
+    width: 2000px;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* sentrerer alt innholdet til midten av skjermen */
+.centerBox {
+    position: relative;
+    width: 2000px;
+    display: flex;
+    justify-content: center;
+}
+
+/* filter som gjør at det ser ut som alt er under vann og at det er mørkere sypere nede (gjennomsiktig gradient fra blå på toppen til svart på bunen) */
+.backgroundWaterBlur {
+    position: absolute;
+    background-image: linear-gradient(rgba(49, 134, 155, 0.377), rgba(0, 0, 0, 0.75)60%);
+    background-repeat: no-repeat;
+    height: 2000px;
+    width: 2000px;
+    z-index: 3;
+}
+
+
+/* boks for å animere opp og ned "flyting" under vann*/
+#bobbingContainer {
+    position: absolute;
+    animation: legoManBobbing 6s ease-in-out 12s infinite;
+}
+
+@keyframes legoManBobbing {
+    0% {top: 0;}
+    50% {top: -50px;}
+    100% {top: 0;}
+}
+
+
+/* boks som sørger for at både hai og legomann kan animeres sammen lettere */
+#moveBothContainer {
+    position: relative;
+    animation: sinking 12s ease-out forwards;
+    top: 1000px;
+}
+@keyframes sinking {
+    0% {top: -200px;}
+    9% {top: -200px;}
+    10% {top: -40px;}
+    100% {top: 1000px;}
+}
+
+#legoMan {
+    position: absolute;
+    width: 120px;
+    transform: rotateZ(0deg);
+    animation: spinning 20s ease-out;
+}
+
+@keyframes spinning {
+    0% {}
+    100% {transform: rotateZ(360deg);}
+}
+
+.sharkShadow {
+    position: absolute;
+    top: 950px;
+    left: -200px;
+    animation: sharkShadowLurking 35s linear 20s infinite;
+}
+@keyframes sharkShadowLurking {
+    0% {left: -200px; transform: scaleX(1)}
+    50% {left: 2100px; transform: scaleX(1)}
+    50.1% {left: 2100px; transform: scaleX(-1)}
+    100% {left: -200px; transform: scaleX(-1)}
+}
+
+.shark {
+    position: absolute;
+    transform: translateX(-50%);
+    top: -85px;
+    left: -1500px;
+}
+
+#sharkBody {
+    position: absolute;
+}
+
+#sharkMouth {
+    position: absolute;
+    top: 65px;
+    left: 295px;
+    transform-origin: 10% 65%;
+    transform: rotateZ(10deg);
+}
+
+#sharkShadowCheckbox {
+    cursor: pointer;
+    opacity: 0;
+    height: 70px;
+    width: 150px;
+    z-index: 5;
+}
+
+#sharkShadowCheckbox:checked {
+    z-index: -1;
+}
+
+#sharkShadowImage {
+    width: 150px;
+}
+
+#sharkShadowCheckbox:checked ~#sharkShadowImage{
+    transition: 3s;
+    opacity: 0;
+}
+
+#sharkShadowCheckbox:checked ~.centerBox>#bobbingContainer>#moveBothContainer>.shark{
+    animation: sharkSwim 1s ease-in 3s forwards, sharkSwimBack 3s ease-in 8s forwards;
+}
+@keyframes sharkSwim {
+    from {left: -1500px}
+    to {left: -370px}
+}
+@keyframes sharkSwimBack {
+    from {left: -370px}
+    to {left: 1500px}
+}
+
+#sharkShadowCheckbox:checked ~.centerBox>#bobbingContainer>#moveBothContainer>.shark>#sharkMouth{
+    animation: sharkBite 6.5s linear;
+    animation-delay: 2s;
+}
+@keyframes sharkBite {
+    0% {transform: rotateZ(10deg)}
+    24% {transform: rotateZ(10deg)}
+    30% {transform: rotateZ(-20deg)}
+    30.5% {transform: rotateZ(10deg)}
+    89% {transform: rotateZ(10deg)}
+    91.5% {transform: rotateZ(0deg)}
+    92% {transform: rotateZ(10deg)}
+    100% {transform: rotateZ(10deg)}
+}
+
+#sharkShadowCheckbox:checked ~.centerBox>#bobbingContainer>#moveBothContainer{
+    transform-origin: -120px 100px;
+    animation: 
+        leftToRight 4s ease-out 4s, 
+        rightToLeft 3s ease-out 6s forwards, 
+        rising 12s ease-in 8s forwards, 
+        savageShaking 2s linear 4s, 
+        ripArmOffSwim 6.5s ease-out 6s forwards;
+}
+
+@keyframes leftToRight {
+    0% {left: 0;}
+    100% {left: 3000px;}
+}
+
+@keyframes rightToLeft {
+    0% {left: 1500px;}
+    100% {left: 265px;}
+}
+
+@keyframes rising {
+    0% {top: 1000px;}
+    100% {top: -200px;}
+}
+
+@keyframes savageShaking {
+    0% {transform: rotateZ(0deg)}
+    5% {transform: rotateZ(5deg)}
+    10% {transform: rotateZ(-5deg)}
+    15% {transform: rotateZ(15deg)}
+    20% {transform: rotateZ(-15deg)}
+    25% {transform: rotateZ(15deg)}
+    30% {transform: rotateZ(-15deg)}
+    35% {transform: rotateZ(15deg)}
+    40% {transform: rotateZ(-15deg)}
+    45% {transform: rotateZ(15deg)}
+    50% {transform: rotateZ(-15deg)}
+    55% {transform: rotateZ(15deg)}
+    60% {transform: rotateZ(-15deg)}
+    65% {transform: rotateZ(15deg)}
+    70% {transform: rotateZ(-15deg)}
+    75% {transform: rotateZ(15deg)}
+
+    76% {transform: rotateZ(0deg)}
+    100% {transform: rotateZ(0deg)}
+}
+
+@keyframes ripArmOffSwim {
+    0% {transform: scaleX(1)}
+    1% {transform: scaleX(-1)}
+    28% {transform: scaleX(-1) rotateZ(0deg)}
+    30% {transform: scaleX(-1) rotateZ(0deg)}
+    31% {transform: scaleX(-1) rotateZ(5deg)}
+    45% {transform: scaleX(-1) rotateZ(0deg)}
+    100% {transform: scaleX(-1)}
+}
+
+#sharkShadowCheckbox:checked ~.centerBox>#bobbingContainer>#moveBothContainer>#legoMan{
+    transition-delay: 4s;
+    transform: rotateZ(40deg);
+    animation: rotateMan 0.2s 4s, removeMan 0s 6s forwards;
+}
+@keyframes rotateMan {
+    0% {transform: rotateZ(0deg);}
+    100% {transform: rotateZ(40deg);}
+}
+@keyframes removeMan {
+    0% {opacity: 100%;}
+    100% {opacity: 0%;}
+}
+
+
+#legoManNoArm{
+    position: relative;
+    width: 120px;
+    transform: scaleX(-1);
+    opacity: 0;
+}
+#sharkShadowCheckbox:checked ~.centerBox>#bobbingContainer>#moveBothContainer>#legoManNoArm {
+    animation: spawnNoArmMan 0s linear 6s forwards, rotateNoArmMan 10s ease-in-out 6s forwards;
+}
+@keyframes rotateNoArmMan {
+    0% {left: -95px; top: 12px; transform: scaleX(-1) rotateZ(-60deg);}
+    20% {left: -95px; top: 12px; transform: scaleX(-1) rotateZ(-60deg);}
+    100% {left: -95px; top: 12px; transform: scaleX(-1) rotateZ(0deg);}
+}
+@keyframes spawnNoArmMan {
+    0% {opacity: 0%;}
+    100% {opacity: 100%;}
+}
+
+
+#legoManArm {
+    position: absolute;
+    top: 130px;
+    left: 345px;
+    width: 120px;
+    transform-origin: 10% 65%;
+    transform: rotateZ(40deg) scaleX(-1);
+    opacity: 0;
+}
+#sharkShadowCheckbox:checked ~.centerBox>#bobbingContainer>#moveBothContainer>.shark>#legoManArm {
+    animation: spawnNoArmMan 0s linear 6s forwards;
+}
+
+
+/* next page link kommer frem 16 sekunder etter hai skyggen er klikket */
+#sharkShadowCheckbox:checked ~#linkToNextPageContainer{
+    animation: showLinkToNextPage 5s 16s forwards;
+}
+
+
+/* jumpscarefish posisjon og animasjon */
+#surprize {
+    position: absolute;
+    bottom: 450px;
+    left: 1200px;
+}
+
+#surprize>img {
+    position: absolute;
+}
+
+#scareFish {
+    position: absolute;
+    left: 230px;
+    top: 0px;
+    transition: 0.4s ease-in-out;
+}
+
+#scareFish>img {
+    position: absolute;
+}
+
+#scareFishJaw {
+    transform-origin: 18% 63.4%;
+    animation: scareFishBite 0.3s ease-in-out infinite;
+}
+
+@keyframes scareFishBite {
+    0% {transform: rotateZ(15deg);}
+    50% {transform: rotateZ(-30deg);}
+    100% {transform: rotateZ(10deg);}
+}
+
+#scareFishEye {
+    transform-origin: 16% 48.48%;
+    animation: scareFishEyeroll 0.6s linear infinite;
+}
+
+@keyframes scareFishEyeroll {
+    0% {transform: rotateZ(0deg);}
+    100% {transform: rotateZ(365deg);}
+}
+
+#scareFishLight {
+    animation: scareFishLight 1s linear infinite;
+}
+
+@keyframes scareFishLight {
+    0% {filter: brightness(1) drop-shadow(0px 0px 10px rgb(255, 255, 0));}
+    50% {filter: brightness(2) drop-shadow(0px 0px 10px rgb(255, 255, 0));;}
+    100% {filter: brightness(1) drop-shadow(0px 0px 10px rgb(255, 255, 0));}
+}
+
+#activateScareFish {
+    cursor: pointer;
+    opacity: 0;
+    width: 50px;
+    height: 70px;
+    position: absolute;
+    top: 1760px;
+    right: 70px;
+    z-index: 10;
+}
+
+#activateScareFish:checked {
+    right: 340px;
+    top: 1800px;
+}
+
+#activateScareFish:hover ~#surprize>#scareFish>#scareFishBody{
+    animation: shakeScareFish 0.15s linear infinite;
+}
+
+#activateScareFish:hover:checked ~#surprize>#scareFish>#scareFishBody{
+    animation: none;
+}
+
+@keyframes shakeScareFish {
+    0% {transform: translateX(-0.5%);}
+    50% {transform: translateX(0.5%) translateY(0.5%);}
+    100% {transform: translateX(-0.5%);}
+}
+
+#activateScareFish:checked ~#surprize>#scareFish{
+    transition: 0.2s ease-in;
+    left: -40px;
+    top: 40px;
+    filter: brightness(1.2) saturate(2);
+}
+
+/* blinking for å signallisere at man kan trykke */
+#surprize>.attractAttentionBlink {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    top: 200px;
+    left: 650px;
+    background: radial-gradient(transparent, rgba(255, 255, 255, 0.9)) ;
+    border-radius: 50%;
+    animation: blink 3s -1.5s linear infinite;
+    z-index: 1;
+}
+
+#activateScareFish:hover ~#surprize>.attractAttentionBlink {
+    animation: none;
+    opacity: 0;
+}
+
+#activateScareFish:checked ~#surprize>.attractAttentionBlink {
+    animation: none;
+    opacity: 0;
+}
+
+
+/* romersk bygning */
+#romanBuilding {
+    position: absolute;
+    top: 1200px;
+    left: 0px;
+    transform: scale(1.2);
+}
+
+
+/* blinking for å signallisere at man kan trykke */
+#treasureChest>.attractAttentionBlink {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    top: 10px;
+    left: 30px;
+    background: radial-gradient(transparent, rgba(255, 255, 255, 0.9)) ;
+    border-radius: 50%;
+    animation: blink 3s linear infinite;
+}
+
+@keyframes blink {
+    0% {transform: scale(0.2);}
+    30% {opacity: 1;}
+    40% {transform: scale(1.4); opacity: 0;}
+    100% {opacity: 0;}
+}
+
+#openChestCheckbox:hover ~.attractAttentionBlink {
+    animation: none;
+    opacity: 0;
+}
+
+#openChestCheckbox:checked ~.attractAttentionBlink {
+    animation: none;
+    opacity: 0;
+}
+
+/* skattekiste på bunnen av havet og animasjon */
+#treasureChest {
+    position: absolute;
+    top: 1820px;
+    left: 400px;
+}
+
+#openChestCheckbox:hover ~#treasureChestClosed {
+    animation: shakeTreasureChest 0.15s linear infinite;
+}
+
+
+#openChestCheckbox:hover {
+    cursor: pointer;
+}
+
+@keyframes shakeTreasureChest {
+    0% {transform: rotateZ(0deg);}
+    25% {transform: rotateZ(4deg);}
+    50% {transform: rotateZ(0deg);}
+    75% {transform: rotateZ(-4deg);}
+    100% {transform: rotateZ(0deg);}
+}
+
+#openChestCheckbox {
+    position: absolute;
+    opacity: 0;
+    top: 20px;
+    left: 15px;
+    height: 90px;
+    width: 140px;
+    z-index: 5;
+}
+
+#openChestCheckbox:checked ~#treasureChestClosed {
+    display: none;
+}
+
+#openChestCheckbox:checked ~#treasureChestOpen {
+    display: block;
+    animation:  treasureChestGlow2 2s linear forwards, treasureChestGlow1 2s linear 2s infinite;
+}
+
+#openChestCheckbox:checked ~#treasureChestWarning {
+    opacity: 200%;
+    top: -300px;
+    transform: scale(1.5);
+    filter: drop-shadow(0 0 1px rgb(255, 187, 0));
+    transition: 0.5s;
+}
+
+#treasureChestClosed {
+    position: absolute;
+    width: 180px;
+}
+
+#treasureChestOpen {
+    display: none;
+    position: absolute;
+    width: 180px;
+}
+
+#treasureChestWarning {
+    position: absolute;
+    top: 0;
+    opacity: 0;
+    transform: scale(0.2);
+    transition: 0.3s;
+}
+
+@keyframes treasureChestGlow1 {
+    0% {filter: brightness(150%) drop-shadow(0 0 10px rgb(255, 208, 78));}
+    50% {filter: brightness(150%) drop-shadow(0 0 30px rgb(255, 208, 78));}
+    100% {filter: brightness(150%) drop-shadow(0 0 10px rgb(255, 208, 78));}
+}
+
+@keyframes treasureChestGlow2 {
+    0% {filter: brightness(100%)}
+    10% {filter: brightness(150%) drop-shadow(0 0 30px rgb(255, 208, 78))}
+    100% {filter: brightness(150%) drop-shadow(0 0 10px rgb(255, 208, 78))}
+}
+
+
+/* sjgress og detaljer */
+.seaGrassAnimation {
+    position: absolute;
+    animation: seaGrassWaving 4s infinite;
+    transform-origin: 45.7% 87.9%;
+}
+@keyframes seaGrassWaving {
+    0% {transform: rotateZ(2deg);}
+    50% {transform: rotateZ(-2deg);}
+    100% {transform: rotateZ(2deg);}
+}
+
+#seaGrass1 {
+    top: 1750px;
+    left: 130px;
+    animation-delay: 0s;
+}
+
+#seaGrass2 {
+    top: 1760px;
+    left: 1630px;
+    animation-delay: -1s;
+}
+
+#seaGrass3 {
+    height: 220px;
+    top: 1600px;
+    left: 1030px;
+    animation-delay: -2s;
+}
+
+#seaGrass4 {
+    height: 170px;
+    top: 1610px;
+    left: 610px;
+    animation-delay: -3s;
+}
+
+#seaGrass5 {
+    height: 180px;
+    top: 1600px;
+    left: 1230px;
+    animation-delay: -1.5s;
+}
+
+@keyframes fishSwimmingRight {
+    0% {transform: translateX(-500px);}
+    50% {transform: translateX(1500px) scaleX(1);}
+    50.1% {transform: translateX(1500px) scaleX(-1);}
+    100% {transform: translateX(-500px) scaleX(-1);}
+}
+
+#fish1 {
+    top: 300px;
+    position: absolute;
+    animation: fishSwimmingRight 60s -19s linear infinite;
+}
+
+#fish2 {
+    position: absolute;
+    height: 40px;
+    top: 700px;
+    left: 100px;
+    animation: fishSwimmingRight 80s linear infinite;
+}
+
+#fish3 {
+    position: absolute;
+    top: 200px;
+    animation: fishgtfa 3s linear forwards;
+}
+
+@keyframes fishgtfa {
+    0% {left: 900px;}
+    39% {left: 1000px;}
+    50% {left: 1200px;}
+    100% {left: 2200px;}
+}
+
+#fish4 {
+    height: 54px;
+    position: absolute;
+    top: 600px;
+    left: -300px;
+    animation: fishSwimmingRight 50s -10s linear infinite
+}
+
+
+/* steminingsbobler og animasjon */
+.bubbles {
+    position: absolute;
+    height: 1996px;
+    width: 2000px;
+    overflow: hidden;
+}
+
+.bubbleContainer {
+    position: absolute;
+}
+
+#bubble1>img {
+    width: 20px;
+}
+
+#bubble2>img {
+    width: 15px;
+}
+
+#bubble3>img {
+    width: 25px;
+}
+
+#bubble4>img {
+    width: 15px;
+}
+
+#bubble5>img {
+    width: 20px;
+}
+
+#bubble6>img {
+    width: 15px;
+}
+
+#bubble7>img {
+    width: 20px;
+}
+
+#bubble8>img {
+    width: 25px;
+}
+
+#bubble9>img {
+    width: 15px;
+}
+
+#bubble10>img {
+    width: 25px;
+}
+
+#bubble11>img {
+    width: 20px;
+}
+
+#bubble12>img {
+    width: 25px;
+}
+
+#bubble13>img {
+    width: 15px;
+}
+
+#bubble14>img {
+    width: 25px;
+}
+
+#bubble15>img {
+    width: 15px;
+}
+
+#bubble16>img {
+    width: 15px;
+}
+
+#bubble17>img {
+    width: 20px;
+}
+
+#bubble18>img {
+    width: 15px;
+}
+
+#bubble19>img {
+    width: 25px;
+}
+
+#bubble20>img {
+    width: 15px;
+}
+
+#bubble1 .wavingBubble {
+    animation-delay: 0s;
+}
+
+#bubble1.risingBubbleChest {
+    animation-delay: 0s;
+}
+
+#bubble2 .wavingBubble {
+    animation-delay: -11.18s;
+}
+
+#bubble2.risingBubbleChest {
+    animation-delay: -11.18s;
+}
+
+#bubble3 .wavingBubble {
+    animation-delay: -6.87s;
+}
+
+#bubble3.risingBubbleChest {
+    animation-delay: -6.87s;
+}
+
+#bubble4 .wavingBubble {
+    animation-delay: -9.45s;
+}
+
+#bubble4.risingBubbleChest {
+    animation-delay: -9.45s;
+}
+
+#bubble5 .wavingBubble {
+    animation-delay: -13.89s;
+}
+
+#bubble5.risingBubbleChest {
+    animation-delay: -13.89s;
+}
+
+#bubble6 .wavingBubble {
+    animation-delay: -17.01s;
+}
+
+#bubble6.risingBubbleChest {
+    animation-delay: -17.01s;
+}
+
+#bubble7 .wavingBubble {
+    animation-delay: -19.29s;
+}
+
+#bubble7.risingBubbleChest {
+    animation-delay: -19.29s;
+}
+
+#bubble8 .wavingBubble {
+    animation-delay: -2.27s;
+}
+
+#bubble8.risingBubbleChest {
+    animation-delay: -2.27s;
+}
+
+#bubble9 .wavingBubble {
+    animation-delay: -15.82s;
+}
+
+#bubble9.risingBubbleChest {
+    animation-delay: -15.82s;
+}
+
+#bubble10 .wavingBubble {
+    animation-delay: -13.52s;
+}
+
+#bubble10.risingBubbleChest {
+    animation-delay: -13.52s;
+}
+
+#bubble11 .wavingBubble {
+    animation-delay: 0s;
+}
+
+#bubble11.risingBubbleSurprize {
+    animation-delay: 0s;
+}
+
+#bubble12 .wavingBubble {
+    animation-delay: -19.41s;
+}
+
+#bubble12.risingBubbleSurprize {
+    animation-delay: -19.41s;
+}
+
+#bubble13 .wavingBubble {
+    animation-delay: -3.77s;
+}
+
+#bubble13.risingBubbleSurprize {
+    animation-delay: -3.77s;
+}
+
+#bubble14 .wavingBubble {
+    animation-delay: -14.64s;
+}
+
+#bubble14.risingBubbleSurprize {
+    animation-delay: -14.64s;
+}
+
+#bubble15 .wavingBubble {
+    animation-delay: -11.15s;
+}
+
+#bubble15.risingBubbleSurprize {
+    animation-delay: -11.15s;
+}
+
+#bubble16 .wavingBubble {
+    animation-delay: -15.98s;
+}
+
+#bubble16.risingBubbleSurprize {
+    animation-delay: -15.98s;
+}
+
+#bubble17 .wavingBubble {
+    animation-delay: -18.25s;
+}
+
+#bubble17.risingBubbleSurprize {
+    animation-delay: -18.25s;
+}
+
+#bubble18 .wavingBubble {
+    animation-delay: -11.24s;
+}
+
+#bubble18.risingBubbleSurprize {
+    animation-delay: -11.24s;
+}
+
+#bubble19 .wavingBubble {
+    animation-delay: -9.86s;
+}
+
+#bubble19.risingBubbleSurprize {
+    animation-delay: -9.86s;
+}
+
+#bubble20 .wavingBubble {
+    animation-delay: -5.85s;
+}
+
+#bubble20.risingBubbleSurprize {
+    animation-delay: -5.85s;
+}
+
+.risingBubbleChest {
+    left: 410px;
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    z-index: 2;
+    animation: risingBubbleChest 15s linear infinite;
+}
+
+@keyframes risingBubbleChest {
+    from {bottom: 90px}
+    to {bottom: 2050px}
+}
+
+.risingBubbleSurprize {
+    left: 1450px;
+    position: absolute;
+    height: 180px;
+    width: 50px;
+    z-index: 2;
+    animation: risingBubbleSurprize 15s linear infinite;
+}
+
+@keyframes risingBubbleSurprize {
+    from {bottom: 70px}
+    to {bottom: 2030px}
+}
+
+.wavingBubble {
+    position: relative;
+    left: -3000px;
+    animation: wavingBubble 0.8s ease-in-out infinite;
+}
+
+@keyframes wavingBubble {
+    0% {left: 0px}
+    50% {left: 5px}
+    100% {left: 0px}
+}
+
+
+/* bobler fra legomannen når han synker */
+.sinkingBubbles>div>img{
+    position: absolute;
+    animation: wavingBubble 0.8s ease-in-out infinite;
+}
+
+.sinkingBubbles>div{
+    position: absolute;
+    top: -1000px;
+    animation: risingBubble 4s linear forwards;
+}
+
+@keyframes risingBubble {
+    from {top: 0px}
+    to {top: -1200px}
+}
+
+.sinkingBubbles {
+    position: absolute;
+    top: 90px;
+}
+
+#sinkingBubble1Wave {
+    transform: translateX(55px); animation-delay: -1s; width: 15px;
+}
+
+#sinkingBubble1Rise {
+    animation-delay: 1.0s;
+}
+
+#sinkingBubble2Wave {
+    transform: translateX(85px); animation-delay: 0.8s; width: 20px;
+}
+
+#sinkingBubble2Rise {
+    animation-delay: 1.2s;
+}
+
+#sinkingBubble3Wave {
+    transform: translateX(70px); animation-delay: 0.3s; width: 25px;
+}
+
+#sinkingBubble3Rise {
+     animation-delay: 1.3s;
+    }
+
+#sinkingBubble4Wave {
+    transform: translateX(55px); animation-delay: 2s; width: 20px;
+}
+
+#sinkingBubble4Rise {
+    animation-delay: 1.7s;
+}
+
+#sinkingBubble5Wave {
+    transform: translateX(55px); animation-delay: 1s; width: 25px;
+}
+
+#sinkingBubble5Rise {
+    animation-delay: 2s;
+}
+
+#sinkingBubble6Wave {
+    transform: translateX(60px); animation-delay: 1.4s; width: 15px;
+}
+
+#sinkingBubble6Rise {
+    animation-delay: 2.1s;
+}
+
+#sinkingBubble7Wave {
+    transform: translateX(70px); animation-delay: 0.5s; width: 25px;
+}
+
+#sinkingBubble7Rise {
+    animation-delay: 2.4s;
+}
+
+#sinkingBubble8Wave {
+    transform: translateX(80px); animation-delay: 0.1s; width: 20px;
+}
+
+#sinkingBubble8Rise {
+    animation-delay: 3.2s;
+}
+
+#sinkingBubble9Wave {
+    transform: translateX(60px); animation-delay: 0.2s; width: 15px;
+}
+
+#sinkingBubble9Rise {
+    animation-delay: 10.2s;
+}
+
+#sinkingBubble10Wave {
+    transform: translateX(60px); animation-delay: 0.4s; width: 25px;
+}
+
+#sinkingBubble10Rise {
+    animation-delay: 10.3s;
+}
+
+#sinkingBubble11Wave {
+    transform: translateX(60px); animation-delay: 0.8s; width: 15px;
+}
+
+#sinkingBubble11Rise {
+    animation-delay: 10.4s;
+}
+
+#sinkingBubble12Wave {
+    transform: translateX(65px); width: 25px;
+}
+
+#sinkingBubble12Rise {
+    animation-delay: 4.4s;
+}
+
+#sinkingBubble13Wave {
+    transform: translateX(60px); animation-delay: 0.2s; width: 20px;
+}
+
+#sinkingBubble13Rise {
+    animation-delay: 4.5s;
+}
+
+#sinkingBubble14Wave {
+    transform: translateX(70px); animation-delay: 0.4s; width: 15px;
+}
+
+#sinkingBubble14Rise {
+    animation-delay: 4.6s;
+}
+
+#sinkingBubble15Wave {
+    transform: translateX(65px); animation-delay: 0.6s; width: 20px;
+}
+
+#sinkingBubble15Rise {
+    animation-delay: 4.7s;
+}
+
+
+/* sandbunn posisjon */
+#bottom {
+    position: absolute;
+    width: 2000px;
+    bottom: 0;
+}

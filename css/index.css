@@ -1,0 +1,4411 @@
+@font-face {
+    font-family: legoFont;
+    src: url(font/legothick.ttf);
+}
+
+body {
+    background-color: rgb(109, 109, 109);
+    padding: 0;
+    margin: 0;
+}
+
+
+/* sett alt på nettsiden i midten */
+.justifyCenter {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+.justifyCenter {
+    overflow: hidden;
+}
+
+h2 {
+    cursor: default;
+    margin-top: 15px;
+    position: absolute;
+    font-family: legoFont;
+    font-size: 36px;
+    z-index: 7;
+    width: 128px;
+    text-align: center;
+}
+
+p {
+    position: absolute;
+    margin: 9px 0 0 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    z-index: 7;
+    text-align: center;
+}
+
+
+/* navbar boundry boksen */
+#navbar {
+    top: 32px;
+    position: absolute;
+    width: 1024px;
+    z-index: 6;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+
+/* Navbar brikker. posisjonering og intro animasjon */
+#navbarLegoBrick1 {
+    width: 128px;
+    opacity: 0;
+    animation: dropInPlace 0.4s ease-in 6s forwards;
+}
+
+#navbarLegoBrick2 {
+    width: 128px;
+    opacity: 0;
+    animation: dropInPlace 0.4s ease-in 6.05s forwards;
+}
+
+#navbarLegoBrick3 { 
+    width: 128px;
+    opacity: 0;
+    animation: dropInPlace 0.4s ease-in 6.1s forwards;
+}
+
+#navbarLegoBrick4 { 
+    width: 128px;
+    opacity: 0;
+    animation: dropInPlace 0.4s ease-in 6.15s forwards;
+}
+
+#navbarLegoBrick5 {
+    width: 128px;
+    opacity: 0;
+    animation: dropInPlace 0.4s ease-in 6.2s forwards;
+} 
+
+#navbarLegoBrick5>div>a {
+    position: absolute;
+    height: 64px;
+    width: 128px;
+    z-index: 10;
+} 
+
+@keyframes dropInPlace {
+    0% {transform: scale(5); opacity: 0;}
+    100% {transform: scale(1); opacity: 1;}
+}
+
+
+/* navbar brikkene hopper opp og ned når man hoverer på de */
+.brickContentContainer {
+    position: absolute;
+    transform: scale(1.02);
+    height: 64px;
+    width: 128px;
+    box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.7);
+}
+
+
+/* navbar dropdown meny on hover */
+.dropdownMenuItem {
+    transition-delay: 0s;
+    cursor: pointer;
+    position: absolute;
+    opacity: 0;
+    width: 160px;
+    height: 32px;
+    top: 64px;
+    box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.7);
+}
+
+.dropdownMenuItem>p {
+    left: 5px;
+    cursor: pointer;
+}
+
+#dropdownMenuItem1 {
+    top: 64px;
+}
+
+.dropdownMenuItem>img {
+    position: absolute;
+}
+.dropdownMenuItem:hover {
+    animation: navbarBrickAnimation 0.4s ease-in-out forwards;
+}
+
+.dropdownMenuItem:hover ~.brickContentContainer{
+    box-shadow: none; 
+    transform: scale(1);
+}
+
+
+/* hitbox til linker i dropdown menyene */
+.dropdownMenuLinkContainer {
+    position: absolute;
+    width: 160px;
+    height: 32px;
+    z-index: 10;
+}
+
+
+/* setter alle bildene i navbar brikkene på brikkene, istedenfor under... */
+.brickContentContainer>img {
+    position: absolute;
+}
+
+.brickContentContainer:hover .dropdownMenuItem{
+    transition-delay: 0.4s;
+    opacity: 1;
+}
+
+.brickContentContainer:hover {
+    animation: navbarBrickAnimation 0.4s ease-in-out forwards;
+}
+
+#navbarLegoBrick5>.brickContentContainer:hover {
+    transition-delay: 0.35s;
+    filter: brightness(1.3) saturate(0);
+}
+
+@keyframes navbarBrickAnimation {
+    0% {box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.7); transform: scale(1.02); z-index: 5}
+    50% {box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.7); transform: scale(1.1); z-index: 5;}
+    100% {box-shadow: none; transform: scale(1);}
+}
+
+#footer>a>img:hover {
+    filter: brightness(1.5);
+    animation: navbarBrickAnimation 0.4s ease-in-out forwards;
+}
+
+#footer>a:hover {
+    z-index: 11;
+}
+
+#copyrightBarContainer:hover {
+    filter: brightness(1.2);
+    animation: navbarBrickAnimation 0.4s ease-in-out forwards;
+}
+
+#legoBackground {
+    position: absolute;
+    top: 32px;
+    height: 1024px;
+    width: 1024px;
+    font-size: 0;
+    animation: shadow 2s ease-in 2s forwards;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+@keyframes shadow {
+    0% {box-shadow: 0px 0px 0px black;}
+    100% {box-shadow: 0px 0px 20px black;}
+}
+
+.dropInPlace {
+    opacity: 0;
+    position: relative;
+    animation: dropInPlace 0.4s ease-in 4s forwards;
+}
+
+.bounceEffect:hover {
+    animation: none;
+}
+
+.bounceEffect {
+    animation: bounce 0.4s ease-in-out;
+}
+
+
+/* lag machine animate on hoover */
+@keyframes bounce {
+    0% {transform: scale(1); opacity: 1;}
+    50% {transform: scale(1.1); opacity: 1; box-shadow: 0px 0px 20px black; z-index: 5;}
+    100% {transform: scale(1); opacity: 1;}
+}
+
+#footer {
+    position: absolute;
+    top: 1055px;
+    font-size: 0;
+    z-index: 12;
+}
+
+#footer>a {
+    position: absolute;
+    opacity: 0;
+}
+
+
+/* brikker nederst på siden, copyright og sosiale media dill dall */
+#legoLink {
+    left: 513px; 
+    animation: dropInPlace 0.4s ease-in 6.7s forwards
+}
+
+#instagramLink {
+    left: 545px; 
+    animation: dropInPlace 0.4s ease-in 6.8s forwards
+}
+
+#youtubeLink {
+    left: 577px; 
+    animation: dropInPlace 0.4s ease-in 6.9s forwards
+}
+
+#facebookLink {
+    left: 609px; 
+    animation: dropInPlace 0.4s ease-in 7s forwards
+}
+
+#copyrightBar {
+    opacity: 0;
+    left: -129px;
+    width: 258px;
+    height: 33px;
+    box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.7);
+    animation: dropInPlace 0.4s ease-in 6.5s forwards
+}
+
+/* lager fargehjulet animert på nederste copyright greie */
+#copyrightBar:hover p{
+    animation: colorWheel 8s linear infinite;
+}
+
+@keyframes colorWheel {
+    0% {color: rgb(255, 0, 0);}
+    10% {color: rgb(255, 145, 0);}
+    20% {color: rgb(238, 255, 0);}
+    30% {color: rgb(30, 255, 0);}
+    40% {color: rgb(0, 255, 191);}
+    50% {color: rgb(0, 255, 255);}
+    60% {color: rgb(0, 89, 255);}
+    70% {color: rgb(55, 0, 255);}
+    80% {color: rgb(225, 0, 255);}
+    90% {color: rgb(255, 0, 106);}
+    100% {color: rgb(255, 0, 1);}
+}
+
+#copyrightBar>img {
+    position: absolute;
+    width: 258px;
+    height: 33px;
+}
+
+#copyrightBar>p {
+    cursor: default;
+    width: 256px;
+    z-index: 10;
+}
+
+
+/* forskjellig forskinkelse på animasjon for hver legobrikke som lager lego logo */
+#brick0 {
+    animation-delay: 1.57s
+}
+
+#brick1 {
+    animation-delay: 1.79s
+}
+
+#brick2 {
+    animation-delay: 3.75s
+}
+
+#brick3 {
+    animation-delay: 3.31s
+}
+
+#brick4 {
+    animation-delay: 1.58s
+}
+
+#brick5 {
+    animation-delay: 2.88s
+}
+
+#brick6 {
+    animation-delay: 2.22s
+}
+
+#brick7 {
+    animation-delay: 2.23s
+}
+
+#brick8 {
+    animation-delay: 1.54s
+}
+
+#brick9 {
+    animation-delay: 4.04s
+}
+
+#brick10  {
+    animation-delay: 2.12s
+}
+
+#brick11  {
+    animation-delay: 3.10s
+}
+
+#brick12  {
+    animation-delay: 0.93s
+}
+
+#brick13  {
+    animation-delay: 4.64s
+}
+
+#brick14  {
+    animation-delay: 4.01s
+}
+
+#brick15  {
+    animation-delay: 2.38s
+}
+
+#brick16  {
+    animation-delay: 3.28s
+}
+
+#brick17  {
+    animation-delay: 2.97s
+}
+
+#brick18  {
+    animation-delay: 1.81s
+}
+
+#brick19  {
+    animation-delay: 1.57s
+}
+
+#brick20  {
+    animation-delay: 1.92s
+}
+
+#brick21  {
+    animation-delay: 2.50s
+}
+
+#brick22  {
+    animation-delay: 1.91s
+}
+
+#brick23  {
+    animation-delay: 4.16s
+}
+
+#brick24  {
+    animation-delay: 3.06s
+}
+
+#brick25  {
+    animation-delay: 0.69s
+}
+
+#brick26  {
+    animation-delay: 2.95s
+}
+
+#brick27  {
+    animation-delay: 3.15s
+}
+
+#brick28  {
+    animation-delay: 3.36s
+}
+
+#brick29  {
+    animation-delay: 3.84s
+}
+
+#brick30  {
+    animation-delay: 2.87s
+}
+
+#brick31  {
+    animation-delay: 2.65s
+}
+
+#brick32  {
+    animation-delay: 2.82s
+}
+
+#brick33  {
+    animation-delay: 1.87s
+}
+
+#brick34  {
+    animation-delay: 1.53s
+}
+
+#brick35  {
+    animation-delay: 1.61s
+}
+
+#brick36  {
+    animation-delay: 2.34s
+}
+
+#brick37  {
+    animation-delay: 3.56s
+}
+
+#brick38  {
+    animation-delay: 1.90s
+}
+
+#brick39  {
+    animation-delay: 1.22s
+}
+
+#brick40  {
+    animation-delay: 2.10s
+}
+
+#brick41  {
+    animation-delay: 2.66s
+}
+
+#brick42  {
+    animation-delay: 2.73s
+}
+
+#brick43  {
+    animation-delay: 2.16s
+}
+
+#brick44  {
+    animation-delay: 2.21s
+}
+
+#brick45  {
+    animation-delay: 2.61s
+}
+
+#brick46  {
+    animation-delay: 1.11s
+}
+
+#brick47  {
+    animation-delay: 1.11s
+}
+
+#brick48  {
+    animation-delay: 3.58s
+}
+
+#brick49  {
+    animation-delay: 1.93s
+}
+
+#brick50  {
+    animation-delay: 3.66s
+}
+
+#brick51  {
+    animation-delay: 2.11s
+}
+
+#brick52  {
+    animation-delay: 2.16s
+}
+
+#brick53  {
+    animation-delay: 1.98s
+}
+
+#brick54  {
+    animation-delay: 2.08s
+}
+
+#brick55  {
+    animation-delay: 2.95s
+}
+
+#brick56  {
+    animation-delay: 2.52s
+}
+
+#brick57  {
+    animation-delay: 2.74s
+}
+
+#brick58  {
+    animation-delay: 2.42s
+}
+
+#brick59  {
+    animation-delay: 2.34s
+}
+
+#brick60  {
+    animation-delay: 2.17s
+}
+
+#brick61  {
+    animation-delay: 3.19s
+}
+
+#brick62  {
+    animation-delay: 2.32s
+}
+
+#brick63  {
+    animation-delay: 4.34s
+}
+
+#brick64  {
+    animation-delay: 2.40s
+}
+
+#brick65  {
+    animation-delay: 1.45s
+}
+
+#brick66  {
+    animation-delay: 3.54s
+}
+
+#brick67  {
+    animation-delay: 2.07s
+}
+
+#brick68  {
+    animation-delay: 4.58s
+}
+
+#brick69  {
+    animation-delay: 3.18s
+}
+
+#brick70  {
+    animation-delay: 3.20s
+}
+
+#brick71  {
+    animation-delay: 3.20s
+}
+
+#brick72  {
+    animation-delay: 2.85s
+}
+
+#brick73  {
+    animation-delay: 4.31s
+}
+
+#brick74  {
+    animation-delay: 3.96s
+}
+
+#brick75  {
+    animation-delay: 2.28s
+}
+
+#brick76  {
+    animation-delay: 1.40s
+}
+
+#brick77  {
+    animation-delay: 2.47s
+}
+
+#brick78  {
+    animation-delay: 2.99s
+}
+
+#brick79  {
+    animation-delay: 3.40s
+}
+
+#brick80  {
+    animation-delay: 1.84s
+}
+
+#brick81  {
+    animation-delay: 2.77s
+}
+
+#brick82  {
+    animation-delay: 2.44s
+}
+
+#brick83  {
+    animation-delay: 2.20s
+}
+
+#brick84  {
+    animation-delay: 2.24s
+}
+
+#brick85  {
+    animation-delay: 1.51s
+}
+
+#brick86  {
+    animation-delay: 2.70s
+}
+
+#brick87  {
+    animation-delay: 3.36s
+}
+
+#brick88  {
+    animation-delay: 2.67s
+}
+
+#brick89  {
+    animation-delay: 3.64s
+}
+
+#brick90  {
+    animation-delay: 2.53s
+}
+
+#brick91  {
+    animation-delay: 1.72s
+}
+
+#brick92  {
+    animation-delay: 2.21s
+}
+
+#brick93  {
+    animation-delay: 0.73s
+}
+
+#brick94  {
+    animation-delay: 3.24s
+}
+
+#brick95  {
+    animation-delay: 2.90s
+}
+
+#brick96  {
+    animation-delay: 1.64s
+}
+
+#brick97  {
+    animation-delay: 2.38s
+}
+
+#brick98  {
+    animation-delay: 3.46s
+}
+
+#brick99  {
+    animation-delay: 1.41s
+}
+
+#brick100 {
+    animation-delay: 2.23s
+}
+
+#brick101 {
+    animation-delay: 3.52s
+}
+
+#brick102 {
+    animation-delay: 1.31s
+}
+
+#brick103 {
+    animation-delay: 1.30s
+}
+
+#brick104 {
+    animation-delay: 3.09s
+}
+
+#brick105 {
+    animation-delay: 2.33s
+}
+
+#brick106 {
+    animation-delay: 3.42s
+}
+
+#brick107 {
+    animation-delay: 2.24s
+}
+
+#brick108 {
+    animation-delay: 2.36s
+}
+
+#brick109 {
+    animation-delay: 1.0s
+}
+
+#brick110 {
+    animation-delay: 2.13s
+}
+
+#brick111 {
+    animation-delay: 2.59s
+}
+
+#brick112 {
+    animation-delay: 2.71s
+}
+
+#brick113 {
+    animation-delay: 4.57s
+}
+
+#brick114 {
+    animation-delay: 2.30s
+}
+
+#brick115 {
+    animation-delay: 2.50s
+}
+
+#brick116 {
+    animation-delay: 2.55s
+}
+
+#brick117 {
+    animation-delay: 2.44s
+}
+
+#brick118 {
+    animation-delay: 1.93s
+}
+
+#brick119 {
+    animation-delay: 3.45s
+}
+
+#brick120 {
+    animation-delay: 4.04s
+}
+
+#brick121 {
+    animation-delay: 3.65s
+}
+
+#brick122 {
+    animation-delay: 2.28s
+}
+
+#brick123 {
+    animation-delay: 2.49s
+}
+
+#brick124 {
+    animation-delay: 3.23s
+}
+
+#brick125 {
+    animation-delay: 2.58s
+}
+
+#brick126 {
+    animation-delay: 3.67s
+}
+
+#brick127 {
+    animation-delay: 2.27s
+}
+
+#brick128 {
+    animation-delay: 2.97s
+}
+
+#brick129 {
+    animation-delay: 2.53s
+}
+
+#brick130 {
+    animation-delay: 3.42s
+}
+
+#brick131 {
+    animation-delay: 4.13s
+}
+
+#brick132 {
+    animation-delay: 3.37s
+}
+
+#brick133 {
+    animation-delay: 2.18s
+}
+
+#brick134 {
+    animation-delay: 2.21s
+}
+
+#brick135 {
+    animation-delay: 2.50s
+}
+
+#brick136 {
+    animation-delay: 3.65s
+}
+
+#brick137 {
+    animation-delay: 3.89s
+}
+
+#brick138 {
+    animation-delay: 2.93s
+}
+
+#brick139 {
+    animation-delay: 2.39s
+}
+
+#brick140 {
+    animation-delay: 2.20s
+}
+
+#brick141 {
+    animation-delay: 2.27s
+}
+
+#brick142 {
+    animation-delay: 2.24s
+}
+
+#brick143 {
+    animation-delay: 2.65s
+}
+
+#brick144 {
+    animation-delay: 2.64s
+}
+
+#brick145 {
+    animation-delay: 3.27s
+}
+
+#brick146 {
+    animation-delay: 1.85s
+}
+
+#brick147 {
+    animation-delay: 2.69s
+}
+
+#brick148 {
+    animation-delay: 1.96s
+}
+
+#brick149 {
+    animation-delay: 2.54s
+}
+
+#brick150 {
+    animation-delay: 3.50s
+}
+
+#brick151 {
+    animation-delay: 3.06s
+}
+
+#brick152 {
+    animation-delay: 2.93s
+}
+
+#brick153 {
+    animation-delay: 2.55s
+}
+
+#brick154 {
+    animation-delay: 3.77s
+}
+
+#brick155 {
+    animation-delay: 4.27s
+}
+
+#brick156 {
+    animation-delay: 2.05s
+}
+
+#brick157 {
+    animation-delay: 2.94s
+}
+
+#brick158 {
+    animation-delay: 1.74s
+}
+
+#brick159 {
+    animation-delay: 2.71s
+}
+
+#brick160 {
+    animation-delay: 2.53s
+}
+
+#brick161 {
+    animation-delay: 3.45s
+}
+
+#brick162 {
+    animation-delay: 2.74s
+}
+
+#brick163 {
+    animation-delay: 2.22s
+}
+
+#brick164 {
+    animation-delay: 2.23s
+}
+
+#brick165 {
+    animation-delay: 2.70s
+}
+
+#brick166 {
+    animation-delay: 4.51s
+}
+
+#brick167 {
+    animation-delay: 2.68s
+}
+
+#brick168 {
+    animation-delay: 3.36s
+}
+
+#brick169 {
+    animation-delay: 2.44s
+}
+
+#brick170 {
+    animation-delay: 3.04s
+}
+
+#brick171 {
+    animation-delay: 2.25s
+}
+
+#brick172 {
+    animation-delay: 2.21s
+}
+
+#brick173 {
+    animation-delay: 2.07s
+}
+
+#brick174 {
+    animation-delay: 1.30s
+}
+
+#brick175 {
+    animation-delay: 2.23s
+}
+
+#brick176 {
+    animation-delay: 2.36s
+}
+
+#brick177 {
+    animation-delay: 3.41s
+}
+
+#brick178 {
+    animation-delay: 3.03s
+}
+
+#brick179 {
+    animation-delay: 1.37s
+}
+
+#brick180 {
+    animation-delay: 2.02s
+}
+
+#brick181 {
+    animation-delay: 3.51s
+}
+
+#brick182 {
+    animation-delay: 1.39s
+}
+
+#brick183 {
+    animation-delay: 1.74s
+}
+
+#brick184 {
+    animation-delay: 1.87s
+}
+
+#brick185 {
+    animation-delay: 3.37s
+}
+
+#brick186 {
+    animation-delay: 2.55s
+}
+
+#brick187 {
+    animation-delay: 2.77s
+}
+
+#brick188 {
+    animation-delay: 2.41s
+}
+
+#brick189 {
+    animation-delay: 1.65s
+}
+
+#brick190 {
+    animation-delay: 1.88s
+}
+
+#brick191 {
+    animation-delay: 3.78s
+}
+
+#brick192 {
+    animation-delay: 1.27s
+}
+
+#brick193 {
+    animation-delay: 4.34s
+}
+
+#brick194 {
+    animation-delay: 2.73s
+}
+
+#brick195 {
+    animation-delay: 0.74s
+}
+
+#brick196 {
+    animation-delay: 2.37s
+}
+
+#brick197 {
+    animation-delay: 3.05s
+}
+
+#brick198 {
+    animation-delay: 1.06s
+}
+
+#brick199 {
+    animation-delay: 3.00s
+}
+
+#brick200 {
+    animation-delay: 2.70s
+}
+
+#brick201 {
+    animation-delay: 2.55s
+}
+
+#brick202 {
+    animation-delay: 4.19s
+}
+
+#brick203 {
+    animation-delay: 2.91s
+}
+
+#brick204 {
+    animation-delay: 2.54s
+}
+
+#brick205 {
+    animation-delay: 3.55s
+}
+
+#brick206 {
+    animation-delay: 3.00s
+}
+
+#brick207 {
+    animation-delay: 2.26s
+}
+
+#brick208 {
+    animation-delay: 2.01s
+}
+
+#brick209 {
+    animation-delay: 2.61s
+}
+
+#brick210 {
+    animation-delay: 3.50s
+}
+
+#brick211 {
+    animation-delay: 2.35s
+}
+
+#brick212 {
+    animation-delay: 2.91s
+}
+
+#brick213 {
+    animation-delay: 2.40s
+}
+
+#brick214 {
+    animation-delay: 2.47s
+}
+
+#brick215 {
+    animation-delay: 1.78s
+}
+
+#brick216 {
+    animation-delay: 1.76s
+}
+
+#brick217 {
+    animation-delay: 1.91s
+}
+
+#brick218 {
+    animation-delay: 2.22s
+}
+
+#brick219 {
+    animation-delay: 1.93s
+}
+
+#brick220 {
+    animation-delay: 1.25s
+}
+
+#brick221 {
+    animation-delay: 3.88s
+}
+
+#brick222 {
+    animation-delay: 3.40s
+}
+
+#brick223 {
+    animation-delay: 1.72s
+}
+
+#brick224 {
+    animation-delay: 3.29s
+}
+
+#brick225 {
+    animation-delay: 2.80s
+}
+
+#brick226 {
+    animation-delay: 1.38s
+}
+
+#brick227 {
+    animation-delay: 2.71s
+}
+
+#brick228 {
+    animation-delay: 1.37s
+}
+
+#brick229 {
+    animation-delay: 3.45s
+}
+
+#brick230 {
+    animation-delay: 1.68s
+}
+
+#brick231 {
+    animation-delay: 2.31s
+}
+
+#brick232 {
+    animation-delay: 2.20s
+}
+
+#brick233 {
+    animation-delay: 1.80s
+}
+
+#brick234 {
+    animation-delay: 1.28s
+}
+
+#brick235 {
+    animation-delay: 1.55s
+}
+
+#brick236 {
+    animation-delay: 2.92s
+}
+
+#brick237 {
+    animation-delay: 2.35s
+}
+
+#brick238 {
+    animation-delay: 2.92s
+}
+
+#brick239 {
+    animation-delay: 1.58s
+}
+
+#brick240 {
+    animation-delay: 2.31s
+}
+
+#brick241 {
+    animation-delay: 2.06s
+}
+
+#brick242 {
+    animation-delay: 2.82s
+}
+
+#brick243 {
+    animation-delay: 3.02s
+}
+
+#brick244 {
+    animation-delay: 1.98s
+}
+
+#brick245 {
+    animation-delay: 2.44s
+}
+
+#brick246 {
+    animation-delay: 4.17s
+}
+
+#brick247 {
+    animation-delay: 2.51s
+}
+
+#brick248 {
+    animation-delay: 3.31s
+}
+
+#brick249 {
+    animation-delay: 2.36s
+}
+
+#brick250 {
+    animation-delay: 2.10s
+}
+
+#brick251 {
+    animation-delay: 2.50s
+}
+
+#brick252 {
+    animation-delay: 2.82s
+}
+
+#brick253 {
+    animation-delay: 3.42s
+}
+
+#brick254 {
+    animation-delay: 3.04s
+}
+
+#brick255 {
+    animation-delay: 2.60s
+}
+
+#brick256 {
+    animation-delay: 2.57s
+}
+
+#brick257 {
+    animation-delay: 2.06s
+}
+
+#brick258 {
+    animation-delay: 1.74s
+}
+
+#brick259 {
+    animation-delay: 2.07s
+}
+
+#brick260 {
+    animation-delay: 2.89s
+}
+
+#brick261 {
+    animation-delay: 1.52s
+}
+
+#brick262 {
+    animation-delay: 3.01s
+}
+
+#brick263 {
+    animation-delay: 2.53s
+}
+
+#brick264 {
+    animation-delay: 2.36s
+}
+
+#brick265 {
+    animation-delay: 4.07s
+}
+
+#brick266 {
+    animation-delay: 2.51s
+}
+
+#brick267 {
+    animation-delay: 1.96s
+}
+
+#brick268 {
+    animation-delay: 1.44s
+}
+
+#brick269 {
+    animation-delay: 3.18s
+}
+
+#brick270 {
+    animation-delay: 2.36s
+}
+
+#brick271 {
+    animation-delay: 0.97s
+}
+
+#brick272 {
+    animation-delay: 3.28s
+}
+
+#brick273 {
+    animation-delay: 1.47s
+}
+
+#brick274 {
+    animation-delay: 3.10s
+}
+
+#brick275 {
+    animation-delay: 2.35s
+}
+
+#brick276 {
+    animation-delay: 3.39s
+}
+
+#brick277 {
+    animation-delay: 2.33s
+}
+
+#brick278 {
+    animation-delay: 2.54s
+}
+
+#brick279 {
+    animation-delay: 3.34s
+}
+
+#brick280 {
+    animation-delay: 1.97s
+}
+
+#brick281 {
+    animation-delay: 2.86s
+}
+
+#brick282 {
+    animation-delay: 1.12s
+}
+
+#brick283 {
+    animation-delay: 3.42s
+}
+
+#brick285 {
+    animation-delay: 1.81s
+}
+
+#brick286 {
+    animation-delay: 2.10s
+}
+
+#brick287 {
+    animation-delay: 1.86s
+}
+
+#brick288 {
+    animation-delay: 1.86s
+}
+
+#brick289 {
+    animation-delay: 2.45s
+}
+
+#brick290 {
+    animation-delay: 2.30s
+}
+
+#brick291 {
+    animation-delay: 2.26s
+}
+
+#brick292 {
+    animation-delay: 1.32s
+}
+
+#brick293 {
+    animation-delay: 1.68s
+}
+
+#brick294 {
+    animation-delay: 0.67s
+}
+
+#brick295 {
+    animation-delay: 2.02s
+}
+
+#brick296 {
+    animation-delay: 2.88s
+}
+
+#brick297 {
+    animation-delay: 1.69s
+}
+
+#brick298 {
+    animation-delay: 2.47s
+}
+
+#brick299 {
+    animation-delay: 2.76s
+}
+
+#brick300 {
+    animation-delay: 2.48s
+}
+
+#brick301 {
+    animation-delay: 1.63s
+}
+
+#brick302 {
+    animation-delay: 1.78s
+}
+
+#brick303 {
+    animation-delay: 2.81s
+}
+
+#brick304 {
+    animation-delay: 2.10s
+}
+
+#brick305 {
+    animation-delay: 3.00s
+}
+
+#brick306 {
+    animation-delay: 3.52s
+}
+
+#brick307 {
+    animation-delay: 2.14s
+}
+
+#brick308 {
+    animation-delay: 1.90s
+}
+
+#brick309 {
+    animation-delay: 1.59s
+}
+
+#brick310 {
+    animation-delay: 4.17s
+}
+
+#brick311 {
+    animation-delay: 3.87s
+}
+
+#brick312 {
+    animation-delay: 2.48s
+}
+
+#brick313 {
+    animation-delay: 2.12s
+}
+
+#brick314 {
+    animation-delay: 2.86s
+}
+
+#brick315 {
+    animation-delay: 2.56s
+}
+
+#brick316 {
+    animation-delay: 1.75s
+}
+
+#brick317 {
+    animation-delay: 4.06s
+}
+
+#brick318 {
+    animation-delay: 2.64s
+}
+
+#brick319 {
+    animation-delay: 1.56s
+}
+
+#brick320 {
+    animation-delay: 3.58s
+}
+
+#brick321 {
+    animation-delay: 2.60s
+}
+
+#brick322 {
+    animation-delay: 1.66s
+}
+
+#brick323 {
+    animation-delay: 1.96s
+}
+
+#brick324 {
+    animation-delay: 3.08s
+}
+
+#brick325 {
+    animation-delay: 3.04s
+}
+
+#brick326 {
+    animation-delay: 2.04s
+}
+
+#brick327 {
+    animation-delay: 3.08s
+}
+
+#brick328 {
+    animation-delay: 3.02s
+}
+
+#brick329 {
+    animation-delay: 2.09s
+}
+
+#brick330 {
+    animation-delay: 2.80s
+}
+
+#brick331 {
+    animation-delay: 2.59s
+}
+
+#brick332 {
+    animation-delay: 2.07s
+}
+
+#brick333 {
+    animation-delay: 2.50s
+}
+
+#brick334 {
+    animation-delay: 2.16s
+}
+
+#brick335 {
+    animation-delay: 1.46s
+}
+
+#brick336 {
+    animation-delay: 2.83s
+}
+
+#brick338 {
+    animation-delay: 3.45s
+}
+
+#brick339 {
+    animation-delay: 2.61s
+}
+
+#brick340 {
+    animation-delay: 1.74s
+}
+
+#brick341 {
+    animation-delay: 3.71s
+}
+
+#brick342 {
+    animation-delay: 1.45s
+}
+
+#brick343 {
+    animation-delay: 2.52s
+}
+
+#brick344 {
+    animation-delay: 2.83s
+}
+
+#brick345 {
+    animation-delay: 1.93s
+}
+
+#brick346 {
+    animation-delay: 3.58s
+}
+
+#brick347 {
+    animation-delay: 2.99s
+}
+
+#brick348 {
+    animation-delay: 2.76s
+}
+
+#brick349 {
+    animation-delay: 1.33s
+}
+
+#brick350 {
+    animation-delay: 4.34s
+}
+
+#brick351 {
+    animation-delay: 3.21s
+}
+
+#brick352 {
+    animation-delay: 3.13s
+}
+
+#brick353 {
+    animation-delay: 2.91s
+}
+
+#brick354 {
+    animation-delay: 2.90s
+}
+
+#brick355 {
+    animation-delay: 2.81s
+}
+
+#brick356 {
+    animation-delay: 1.55s
+}
+
+#brick357 {
+    animation-delay: 3.27s
+}
+
+#brick358 {
+    animation-delay: 3.37s
+}
+
+#brick359 {
+    animation-delay: 2.04s
+}
+
+#brick360 {
+    animation-delay: 2.29s
+}
+
+#brick361 {
+    animation-delay: 0.91s
+}
+
+#brick362 {
+    animation-delay: 2.47s
+}
+
+#brick363 {
+    animation-delay: 1.90s
+}
+
+#brick364 {
+    animation-delay: 0.73s
+}
+
+#brick365 {
+    animation-delay: 2.28s
+}
+
+#brick366 {
+    animation-delay: 1.77s
+}
+
+#brick367 {
+    animation-delay: 2.65s
+}
+
+#brick368 {
+    animation-delay: 2.78s
+}
+
+#brick369 {
+    animation-delay: 2.11s
+}
+
+#brick370 {
+    animation-delay: 2.42s
+}
+
+#brick371 {
+    animation-delay: 2.23s
+}
+
+#brick372 {
+    animation-delay: 2.75s
+}
+
+#brick373 {
+    animation-delay: 2.77s
+}
+
+#brick374 {
+    animation-delay: 1.07s
+}
+
+#brick375 {
+    animation-delay: 3.47s
+}
+
+#brick376 {
+    animation-delay: 1.83s
+}
+
+#brick377 {
+    animation-delay: 2.33s
+}
+
+#brick378 {
+    animation-delay: 2.62s
+}
+
+#brick379 {
+    animation-delay: 3.01s
+}
+
+#brick380 {
+    animation-delay: 2.02s
+}
+
+#brick381 {
+    animation-delay: 1.83s
+}
+
+#brick382 {
+    animation-delay: 1.59s
+}
+
+#brick383 {
+    animation-delay: 2.33s
+}
+
+#brick384 {
+    animation-delay: 3.27s
+}
+
+#brick385 {
+    animation-delay: 2.67s
+}
+
+#brick386 {
+    animation-delay: 1.86s
+}
+
+#brick387 {
+    animation-delay: 1.69s
+}
+
+#brick388 {
+    animation-delay: 2.25s
+}
+
+#brick389 {
+    animation-delay: 3.24s
+}
+
+#brick390 {
+    animation-delay: 2.75s
+}
+
+#brick391 {
+    animation-delay: 3.17s
+}
+
+#brick392 {
+    animation-delay: 2.35s
+}
+
+#brick393 {
+    animation-delay: 2.10s
+}
+
+#brick394 {
+    animation-delay: 1.11s
+}
+
+#brick395 {
+    animation-delay: 2.47s
+}
+
+#brick396 {
+    animation-delay: 3.34s
+}
+
+#brick397 {
+    animation-delay: 2.83s
+}
+
+#brick398 {
+    animation-delay: 3.95s
+}
+
+#brick399 {
+    animation-delay: 2.50s
+}
+
+#brick400 {
+    animation-delay: 1.34s
+}
+
+#brick401 {
+    animation-delay: 1.98s
+}
+
+#brick402 {
+    animation-delay: 1.95s
+}
+
+#brick403 {
+    animation-delay: 3.35s
+}
+
+#brick404 {
+    animation-delay: 2.26s
+}
+
+#brick405 {
+    animation-delay: 1.66s
+}
+
+#brick406 {
+    animation-delay: 2.50s
+}
+
+#brick407 {
+    animation-delay: 3.08s
+}
+
+#brick408 {
+    animation-delay: 2.07s
+}
+
+#brick409 {
+    animation-delay: 1.65s
+}
+
+#brick410 {
+    animation-delay: 2.38s
+}
+
+#brick411 {
+    animation-delay: 2.28s
+}
+
+#brick412 {
+    animation-delay: 1.71s
+}
+
+#brick413 {
+    animation-delay: 2.74s
+}
+
+#brick414 {
+    animation-delay: 1.58s
+}
+
+#brick415 {
+    animation-delay: 2.92s
+}
+
+#brick416 {
+    animation-delay: 2.34s
+}
+
+#brick417 {
+    animation-delay: 2.68s
+}
+
+#brick418 {
+    animation-delay: 3.45s
+}
+
+#brick419 {
+    animation-delay: 2.48s
+}
+
+#brick420 {
+    animation-delay: 1.84s
+}
+
+#brick421 {
+    animation-delay: 4.53s
+}
+
+#brick422 {
+    animation-delay: 3.34s
+}
+
+#brick423 {
+    animation-delay: 3.43s
+}
+
+#brick424 {
+    animation-delay: 2.91s
+}
+
+#brick425 {
+    animation-delay: 3.47s
+}
+
+#brick426 {
+    animation-delay: 3.07s
+}
+
+#brick427 {
+    animation-delay: 3.19s
+}
+
+#brick428 {
+    animation-delay: 3.30s
+}
+
+#brick429 {
+    animation-delay: 1.19s
+}
+
+#brick430 {
+    animation-delay: 3.60s
+}
+
+#brick431 {
+    animation-delay: 2.43s
+}
+
+#brick432 {
+    animation-delay: 2.48s
+}
+
+#brick433 {
+    animation-delay: 2.44s
+}
+
+#brick434 {
+    animation-delay: 1.25s
+}
+
+#brick435 {
+    animation-delay: 1.88s
+}
+
+#brick436 {
+    animation-delay: 3.26s
+}
+
+#brick437 {
+    animation-delay: 2.90s
+}
+
+#brick438 {
+    animation-delay: 1.08s
+}
+
+#brick439 {
+    animation-delay: 4.19s
+}
+
+#brick440 {
+    animation-delay: 3.57s
+}
+
+#brick441 {
+    animation-delay: 0.78s
+}
+
+#brick442 {
+    animation-delay: 2.51s
+}
+
+#brick443 {
+    animation-delay: 3.46s
+}
+
+#brick444 {
+    animation-delay: 3.00s
+}
+
+#brick445 {
+    animation-delay: 1.33s
+}
+
+#brick446 {
+    animation-delay: 2.41s
+}
+
+#brick447 {
+    animation-delay: 3.44s
+}
+
+#brick448 {
+    animation-delay: 3.24s
+}
+
+#brick449 {
+    animation-delay: 2.85s
+}
+
+#brick450 {
+    animation-delay: 1.95s
+}
+
+#brick451 {
+    animation-delay: 3.15s
+}
+
+#brick452 {
+    animation-delay: 2.38s
+}
+
+#brick453 {
+    animation-delay: 3.17s
+}
+
+#brick454 {
+    animation-delay: 1.23s
+}
+
+#brick455 {
+    animation-delay: 3.36s
+}
+
+#brick456 {
+    animation-delay: 2.52s
+}
+
+#brick457 {
+    animation-delay: 3.15s
+}
+
+#brick458 {
+    animation-delay: 3.14s
+}
+
+#brick459 {
+    animation-delay: 2.15s
+}
+
+#brick460 {
+    animation-delay: 1.42s
+}
+
+#brick461 {
+    animation-delay: 2.13s
+}
+
+#brick462 {
+    animation-delay: 2.65s
+}
+
+#brick463 {
+    animation-delay: 3.13s
+}
+
+#brick464 {
+    animation-delay: 1.64s
+}
+
+#brick465 {
+    animation-delay: 2.69s
+}
+
+#brick466 {
+    animation-delay: 2.70s
+}
+
+#brick467 {
+    animation-delay: 3.16s
+}
+
+#brick468 {
+    animation-delay: 3.17s
+}
+
+#brick469 {
+    animation-delay: 2.25s
+}
+
+#brick470 {
+    animation-delay: 0.94s
+}
+
+#brick471 {
+    animation-delay: 2.00s
+}
+
+#brick472 {
+    animation-delay: 2.80s
+}
+
+#brick473 {
+    animation-delay: 3.58s
+}
+
+#brick474 {
+    animation-delay: 1.85s
+}
+
+#brick475 {
+    animation-delay: 3.32s
+}
+
+#brick476 {
+    animation-delay: 2.53s
+}
+
+#brick477 {
+    animation-delay: 3.50s
+}
+
+#brick478 {
+    animation-delay: 2.63s
+}
+
+#brick479 {
+    animation-delay: 1.53s
+}
+
+#brick480 {
+    animation-delay: 2.34s
+}
+
+#brick481 {
+    animation-delay: 2.09s
+}
+
+#brick482 {
+    animation-delay: 1.49s
+}
+
+#brick483 {
+    animation-delay: 2.00s
+}
+
+#brick484 {
+    animation-delay: 2.34s
+}
+
+#brick485 {
+    animation-delay: 2.61s
+}
+
+#brick486 {
+    animation-delay: 3.53s
+}
+
+#brick487 {
+    animation-delay: 2.99s
+}
+
+#brick488 {
+    animation-delay: 1.99s
+}
+
+#brick489 {
+    animation-delay: 2.71s
+}
+
+#brick490 {
+    animation-delay: 2.81s
+}
+
+#brick491 {
+    animation-delay: 2.28s
+}
+
+#brick492 {
+    animation-delay: 2.63s
+}
+
+#brick493 {
+    animation-delay: 2.56s
+}
+
+#brick494 {
+    animation-delay: 3.02s
+}
+
+#brick495 {
+    animation-delay: 1.50s
+}
+
+#brick496 {
+    animation-delay: 3.28s
+}
+
+#brick497 {
+    animation-delay: 1.91s
+}
+
+#brick498 {
+    animation-delay: 3.56s
+}
+
+#brick499 {
+    animation-delay: 2.83s
+}
+
+#brick500 {
+    animation-delay: 1.04s
+}
+
+#brick501 {
+    animation-delay: 2.54s
+}
+
+#brick502 {
+    animation-delay: 2.77s
+}
+
+#brick503 {
+    animation-delay: 0.99s
+}
+
+#brick504 {
+    animation-delay: 1.83s
+}
+
+#brick505 {
+    animation-delay: 2.55s
+}
+
+#brick506 {
+    animation-delay: 3.35s
+}
+
+#brick507 {
+    animation-delay: 4.37s
+}
+
+#brick508 {
+    animation-delay: 1.58s
+}
+
+#brick509 {
+    animation-delay: 1.63s
+}
+
+#brick510 {
+    animation-delay: 3.92s
+}
+
+#brick511 {
+    animation-delay: 2.83s
+}
+
+#brick512 {
+    animation-delay: 2.45s
+}
+
+#brick513 {
+    animation-delay: 3.10s
+}
+
+#brick514 {
+    animation-delay: 2.47s
+}
+
+#brick515 {
+    animation-delay: 3.52s
+}
+
+#brick516 {
+    animation-delay: 2.68s
+}
+
+#brick517 {
+    animation-delay: 1.90s
+}
+
+#brick518 {
+    animation-delay: 3.17s
+}
+
+#brick519 {
+    animation-delay: 2.63s
+}
+
+#brick520 {
+    animation-delay: 2.55s
+}
+
+#brick521 {
+    animation-delay: 2.50s
+}
+
+#brick522 {
+    animation-delay: 2.57s
+}
+
+#brick523 {
+    animation-delay: 2.53s
+}
+
+#brick524 {
+    animation-delay: 3.08s
+}
+
+#brick525 {
+    animation-delay: 3.04s
+}
+
+#brick526 {
+    animation-delay: 3.80s
+}
+
+#brick527 {
+    animation-delay: 2.37s
+}
+
+#brick528 {
+    animation-delay: 2.42s
+}
+
+#brick529 {
+    animation-delay: 2.81s
+}
+
+#brick530 {
+    animation-delay: 3.07s
+}
+
+#brick531 {
+    animation-delay: 2.40s
+}
+
+#brick532 {
+    animation-delay: 3.42s
+}
+
+#brick533 {
+    animation-delay: 3.78s
+}
+
+#brick534 {
+    animation-delay: 4.05s
+}
+
+#brick535 {
+    animation-delay: 3.09s
+}
+
+#brick536 {
+    animation-delay: 3.84s
+}
+
+#brick537 {
+    animation-delay: 2.34s
+}
+
+#brick538 {
+    animation-delay: 2.34s
+}
+
+#brick539 {
+    animation-delay: 3.72s
+}
+
+#brick540 {
+    animation-delay: 2.58s
+}
+
+#brick541 {
+    animation-delay: 2.04s
+}
+
+#brick542 {
+    animation-delay: 2.73s
+}
+
+#brick543 {
+    animation-delay: 1.87s
+}
+
+#brick544 {
+    animation-delay: 1.64s
+}
+
+#brick545 {
+    animation-delay: 3.28s
+}
+
+#brick546 {
+    animation-delay: 2.63s
+}
+
+#brick547 {
+    animation-delay: 2.02s
+}
+
+#brick548 {
+    animation-delay: 2.68s
+}
+
+#brick549 {
+    animation-delay: 3.04s
+}
+
+#brick550 {
+    animation-delay: 1.90s
+}
+
+#brick551 {
+    animation-delay: 2.71s
+}
+
+#brick552 {
+    animation-delay: 3.03s
+}
+
+#brick553 {
+    animation-delay: 1.08s
+}
+
+#brick554 {
+    animation-delay: 1.67s
+}
+
+#brick555 {
+    animation-delay: 1.14s
+}
+
+#brick556 {
+    animation-delay: 0.88s
+}
+
+#brick557 {
+    animation-delay: 3.78s
+}
+
+#brick558 {
+    animation-delay: 3.00s
+}
+
+#brick559 {
+    animation-delay: 1.76s
+}
+
+#brick560 {
+    animation-delay: 1.93s
+}
+
+#brick561 {
+    animation-delay: 1.94s
+}
+
+#brick562 {
+    animation-delay: 2.59s
+}
+
+#brick563 {
+    animation-delay: 2.68s
+}
+
+#brick564 {
+    animation-delay: 3.42s
+}
+
+#brick565 {
+    animation-delay: 3.40s
+}
+
+#brick566 {
+    animation-delay: 1.83s
+}
+
+#brick567 {
+    animation-delay: 3.64s
+}
+
+#brick568 {
+    animation-delay: 2.28s
+}
+
+#brick569 {
+    animation-delay: 1.75s
+}
+
+#brick570 {
+    animation-delay: 1.81s
+}
+
+#brick571 {
+    animation-delay: 2.85s
+}
+
+#brick572 {
+    animation-delay: 2.30s
+}
+
+#brick573 {
+    animation-delay: 2.40s
+}
+
+#brick574 {
+    animation-delay: 2.11s
+}
+
+#brick575 {
+    animation-delay: 2.10s
+}
+
+#brick576 {
+    animation-delay: 2.31s
+}
+
+#brick577 {
+    animation-delay: 1.60s
+}
+
+#brick578 {
+    animation-delay: 4.37s
+}
+
+#brick579 {
+    animation-delay: 1.61s
+}
+
+#brick580 {
+    animation-delay: 3.60s
+}
+
+#brick581 {
+    animation-delay: 1.75s
+}
+
+#brick582 {
+    animation-delay: 1.24s
+}
+
+#brick583 {
+    animation-delay: 2.86s
+}
+
+#brick584 {
+    animation-delay: 1.08s
+}
+
+#brick585 {
+    animation-delay: 2.20s
+}
+
+#brick586 {
+    animation-delay: 2.11s
+}
+
+#brick587 {
+    animation-delay: 2.46s
+}
+
+#brick588 {
+    animation-delay: 2.69s
+}
+
+#brick589 {
+    animation-delay: 2.34s
+}
+
+#brick590 {
+    animation-delay: 2.78s
+}
+
+#brick591 {
+    animation-delay: 3.90s
+}
+
+#brick592 {
+    animation-delay: 2.32s
+}
+
+#brick593 {
+    animation-delay: 4.50s
+}
+
+#brick594 {
+    animation-delay: 1.43s
+}
+
+#brick595 {
+    animation-delay: 1.17s
+}
+
+#brick596 {
+    animation-delay: 2.40s
+}
+
+#brick597 {
+    animation-delay: 0.22s
+}
+
+#brick598 {
+    animation-delay: 3.00s
+}
+
+#brick599 {
+    animation-delay: 3.24s
+}
+
+#brick600 {
+    animation-delay: 3.18s
+}
+
+#brick601 {
+    animation-delay: 2.44s
+}
+
+#brick602 {
+    animation-delay: 2.84s
+}
+
+#brick603 {
+    animation-delay: 3.61s
+}
+
+#brick604 {
+    animation-delay: 3.49s
+}
+
+#brick605 {
+    animation-delay: 2.23s
+}
+
+#brick606 {
+    animation-delay: 2.62s
+}
+
+#brick607 {
+    animation-delay: 1.09s
+}
+
+#brick608 {
+    animation-delay: 1.20s
+}
+
+#brick609 {
+    animation-delay: 2.36s
+}
+
+#brick610 {
+    animation-delay: 3.48s
+}
+
+#brick611 {
+    animation-delay: 3.92s
+}
+
+#brick612 {
+    animation-delay: 3.05s
+}
+
+#brick613 {
+    animation-delay: 3.03s
+}
+
+#brick614 {
+    animation-delay: 1.87s
+}
+
+#brick615 {
+    animation-delay: 1.76s
+}
+
+#brick616 {
+    animation-delay: 3.70s
+}
+
+#brick617 {
+    animation-delay: 3.31s
+}
+
+#brick618 {
+    animation-delay: 2.43s
+}
+
+#brick619 {
+    animation-delay: 3.43s
+}
+
+#brick620 {
+    animation-delay: 2.06s
+}
+
+#brick621 {
+    animation-delay: 3.58s
+}
+
+#brick622 {
+    animation-delay: 3.88s
+}
+
+#brick623 {
+    animation-delay: 2.48s
+}
+
+#brick624 {
+    animation-delay: 1.36s
+}
+
+#brick625 {
+    animation-delay: 1.49s
+}
+
+#brick626 {
+    animation-delay: 1.83s
+}
+
+#brick627 {
+    animation-delay: 3.40s
+}
+
+#brick628 {
+    animation-delay: 1.19s
+}
+
+#brick629 {
+    animation-delay: 1.55s
+}
+
+#brick630 {
+    animation-delay: 2.83s
+}
+
+#brick631 {
+    animation-delay: 3.75s
+}
+
+#brick632 {
+    animation-delay: 3.29s
+}
+
+#brick633 {
+    animation-delay: 1.26s
+}
+
+#brick634 {
+    animation-delay: 2.48s
+}
+
+#brick635 {
+    animation-delay: 1.99s
+}
+
+#brick636 {
+    animation-delay: 2.52s
+}
+
+#brick637 {
+    animation-delay: 0.06s
+}
+
+#brick638 {
+    animation-delay: 3.55s
+}
+
+#brick639 {
+    animation-delay: 2.48s
+}
+
+#brick640 {
+    animation-delay: 1.68s
+}
+
+#brick641 {
+    animation-delay: 3.96s
+}
+
+#brick642 {
+    animation-delay: 2.99s
+}
+
+#brick643 {
+    animation-delay: 3.07s
+}
+
+#brick644 {
+    animation-delay: 3.17s
+}
+
+#brick645 {
+    animation-delay: 1.74s
+}
+
+#brick646 {
+    animation-delay: 2.16s
+}
+
+#brick647 {
+    animation-delay: 2.43s
+}
+
+#brick648 {
+    animation-delay: 3.05s
+}
+
+#brick649 {
+    animation-delay: 2.40s
+}
+
+#brick650 {
+    animation-delay: 3.46s
+}
+
+#brick651 {
+    animation-delay: 2.58s
+}
+
+#brick652 {
+    animation-delay: 4.03s
+}
+
+#brick653 {
+    animation-delay: 3.33s
+}
+
+#brick654 {
+    animation-delay: 1.71s
+}
+
+#brick655 {
+    animation-delay: 2.06s
+}
+
+#brick656 {
+    animation-delay: 1.81s
+}
+
+#brick657 {
+    animation-delay: 2.70s
+}
+
+#brick658 {
+    animation-delay: 2.47s
+}
+
+#brick659 {
+    animation-delay: 1.50s
+}
+
+#brick660 {
+    animation-delay: 2.21s
+}
+
+#brick661 {
+    animation-delay: 3.57s
+}
+
+#brick662 {
+    animation-delay: 1.46s
+}
+
+#brick663 {
+    animation-delay: 2.61s
+}
+
+#brick664 {
+    animation-delay: 2.31s
+}
+
+#brick665 {
+    animation-delay: 0.61s
+}
+
+#brick666 {
+    animation-delay: 2.18s
+}
+
+#brick667 {
+    animation-delay: 0.81s
+}
+
+#brick668 {
+    animation-delay: 2.06s
+}
+
+#brick669 {
+    animation-delay: 3.78s
+}
+
+#brick670 {
+    animation-delay: 1.61s
+}
+
+#brick671 {
+    animation-delay: 3.17s
+}
+
+#brick672 {
+    animation-delay: 1.83s
+}
+
+#brick673 {
+    animation-delay: 2.21s
+}
+
+#brick674 {
+    animation-delay: 2.81s
+}
+
+#brick675 {
+    animation-delay: 1.60s
+}
+
+#brick676 {
+    animation-delay: 3.02s
+}
+
+#brick677 {
+    animation-delay: 2.68s
+}
+
+#brick678 {
+    animation-delay: 2.92s
+}
+
+#brick679 {
+    animation-delay: 1.93s
+}
+
+#brick680 {
+    animation-delay: 2.65s
+}
+
+#brick681 {
+    animation-delay: 3.30s
+}
+
+#brick682 {
+    animation-delay: 2.58s
+}
+
+#brick683 {
+    animation-delay: 2.38s
+}
+
+#brick684 {
+    animation-delay: 2.18s
+}
+
+#brick685 {
+    animation-delay: 1.73s
+}
+
+#brick686 {
+    animation-delay: 1.05s
+}
+
+#brick687 {
+    animation-delay: 2.84s
+}
+
+#brick688 {
+    animation-delay: 1.44s
+}
+
+#brick689 {
+    animation-delay: 2.29s
+}
+
+#brick690 {
+    animation-delay: 2.14s
+}
+
+#brick691 {
+    animation-delay: 2.53s
+}
+
+#brick692 {
+    animation-delay: 2.43s
+}
+
+#brick693 {
+    animation-delay: 1.86s
+}
+
+#brick694 {
+    animation-delay: 2.73s
+}
+
+#brick695 {
+    animation-delay: 2.35s
+}
+
+#brick696 {
+    animation-delay: 1.58s
+}
+
+#brick697 {
+    animation-delay: 3.06s
+}
+
+#brick698 {
+    animation-delay: 1.42s
+}
+
+#brick699 {
+    animation-delay: 1.54s
+}
+
+#brick700 {
+    animation-delay: 2.19s
+}
+
+#brick701 {
+    animation-delay: 2.59s
+}
+
+#brick702 {
+    animation-delay: 1.29s
+}
+
+#brick703 {
+    animation-delay: 2.51s
+}
+
+#brick704 {
+    animation-delay: 1.82s
+}
+
+#brick705 {
+    animation-delay: 2.59s
+}
+
+#brick706 {
+    animation-delay: 1.26s
+}
+
+#brick707 {
+    animation-delay: 1.87s
+}
+
+#brick708 {
+    animation-delay: 2.25s
+}
+
+#brick709 {
+    animation-delay: 2.22s
+}
+
+#brick710 {
+    animation-delay: 2.72s
+}
+
+#brick711 {
+    animation-delay: 0.54s
+}
+
+#brick712 {
+    animation-delay: 3.38s
+}
+
+#brick713 {
+    animation-delay: 3.19s
+}
+
+#brick714 {
+    animation-delay: 2.52s
+}
+
+#brick715 {
+    animation-delay: 4.00s
+}
+
+#brick716 {
+    animation-delay: 2.39s
+}
+
+#brick717 {
+    animation-delay: 1.40s
+}
+
+#brick718 {
+    animation-delay: 2.66s
+}
+
+#brick719 {
+    animation-delay: 1.99s
+}
+
+#brick720 {
+    animation-delay: 2.46s
+}
+
+#brick721 {
+    animation-delay: 1.22s
+}
+
+#brick722 {
+    animation-delay: 1.74s
+}
+
+#brick723 {
+    animation-delay: 2.73s
+}
+
+#brick724 {
+    animation-delay: 2.66s
+}
+
+#brick725 {
+    animation-delay: 2.76s
+}
+
+#brick726 {
+    animation-delay: 1.69s
+}
+
+#brick727 {
+    animation-delay: 1.48s
+}
+
+#brick728 {
+    animation-delay: 3.47s
+}
+
+#brick729 {
+    animation-delay: 1.63s
+}
+
+#brick730 {
+    animation-delay: 1.92s
+}
+
+#brick731 {
+    animation-delay: 5.44s
+}
+
+#brick732 {
+    animation-delay: 3.26s
+}
+
+#brick733 {
+    animation-delay: 0.19s
+}
+
+#brick734 {
+    animation-delay: 1.62s
+}
+
+#brick735 {
+    animation-delay: 2.45s
+}
+
+#brick736 {
+    animation-delay: 1.42s
+}
+
+#brick737 {
+    animation-delay: 2.75s
+}
+
+#brick738 {
+    animation-delay: 3.39s
+}
+
+#brick739 {
+    animation-delay: 2.90s
+}
+
+#brick740 {
+    animation-delay: 3.31s
+}
+
+#brick741 {
+    animation-delay: 2.62s
+}
+
+#brick742 {
+    animation-delay: 2.57s
+}
+
+#brick743 {
+    animation-delay: 3.35s
+}
+
+#brick744 {
+    animation-delay: 2.60s
+}
+
+#brick745 {
+    animation-delay: 2.58s
+}
+
+#brick746 {
+    animation-delay: 2.47s
+}
+
+#brick747 {
+    animation-delay: 0.81s
+}
+
+#brick748 {
+    animation-delay: 2.01s
+}
+
+#brick749 {
+    animation-delay: 2.89s
+}
+
+#brick750 {
+    animation-delay: 2.61s
+}
+
+#brick751 {
+    animation-delay: 2.70s
+}
+
+#brick752 {
+    animation-delay: 1.78s
+}
+
+#brick753 {
+    animation-delay: 2.27s
+}
+
+#brick754 {
+    animation-delay: 1.82s
+}
+
+#brick755 {
+    animation-delay: 3.16s
+}
+
+#brick756 {
+    animation-delay: 2.60s
+}
+
+#brick757 {
+    animation-delay: 2.77s
+}
+
+#brick758 {
+    animation-delay: 4.32s
+}
+
+#brick759 {
+    animation-delay: 2.91s
+}
+
+#brick760 {
+    animation-delay: 2.86s
+}
+
+#brick761 {
+    animation-delay: 2.71s
+}
+
+#brick762 {
+    animation-delay: 3.00s
+}
+
+#brick763 {
+    animation-delay: 2.55s
+}
+
+#brick764 {
+    animation-delay: 2.78s
+}
+
+#brick765 {
+    animation-delay: 2.45s
+}
+
+#brick766 {
+    animation-delay: 2.98s
+}
+
+#brick767 {
+    animation-delay: 0.98s
+}
+
+#brick768 {
+    animation-delay: 2.79s
+}
+
+#brick769 {
+    animation-delay: 1.83s
+}
+
+#brick770 {
+    animation-delay: 1.86s
+}
+
+#brick771 {
+    animation-delay: 1.53s
+}
+
+#brick772 {
+    animation-delay: 2.78s
+}
+
+#brick773 {
+    animation-delay: 3.39s
+}
+
+#brick774 {
+    animation-delay: 3.46s
+}
+
+#brick775 {
+    animation-delay: 0.82s
+}
+
+#brick776 {
+    animation-delay: 4.14s
+}
+
+#brick777 {
+    animation-delay: 2.91s
+}
+
+#brick778 {
+    animation-delay: 2.34s
+}
+
+#brick779 {
+    animation-delay: 1.69s
+}
+
+#brick780 {
+    animation-delay: 1.14s
+}
+
+#brick781 {
+    animation-delay: 2.52s
+}
+
+#brick782 {
+    animation-delay: 0.74s
+}
+
+#brick783 {
+    animation-delay: 3.12s
+}
+
+#brick784 {
+    animation-delay: 3.45s
+}
+
+#brick785 {
+    animation-delay: 2.54s
+}
+
+#brick786 {
+    animation-delay: 1.66s
+}
+
+#brick787 {
+    animation-delay: 2.27s
+}
+
+#brick788 {
+    animation-delay: 2.16s
+}
+
+#brick789 {
+    animation-delay: 2.73s
+}
+
+#brick790 {
+    animation-delay: 3.58s
+}
+
+#brick791 {
+    animation-delay: 2.26s
+}
+
+#brick792 {
+    animation-delay: 2.40s
+}
+
+#brick793 {
+    animation-delay: 2.53s
+}
+
+#brick794 {
+    animation-delay: 2.49s
+}
+
+#brick795 {
+    animation-delay: 4.40s
+}
+
+#brick796 {
+    animation-delay: 2.27s
+}
+
+#brick797 {
+    animation-delay: 3.08s
+}
+
+#brick798 {
+    animation-delay: 3.09s
+}
+
+#brick799 {
+    animation-delay: 3.41s
+}
+
+#brick800 {
+    animation-delay: 1.89s
+}
+
+#brick801 {
+    animation-delay: 2.74s
+}
+
+#brick802 {
+    animation-delay: 1.60s
+}
+
+#brick803 {
+    animation-delay: 2.74s
+}
+
+#brick804 {
+    animation-delay: 3.00s
+}
+
+#brick805 {
+    animation-delay: 2.73s
+}
+
+#brick806 {
+    animation-delay: 1.86s
+}
+
+#brick807 {
+    animation-delay: 1.59s
+}
+
+#brick808 {
+    animation-delay: 2.91s
+}
+
+#brick809 {
+    animation-delay: 2.38s
+}
+
+#brick810 {
+    animation-delay: 2.63s
+}
+
+#brick811 {
+    animation-delay: 3.86s
+}
+
+#brick812 {
+    animation-delay: 2.57s
+}
+
+#brick813 {
+    animation-delay: 3.73s
+}
+
+#brick814 {
+    animation-delay: 1.88s
+}
+
+#brick815 {
+    animation-delay: 2.91s
+}
+
+#brick816 {
+    animation-delay: 2.74s
+}
+
+#brick817 {
+    animation-delay: 1.88s
+}
+
+#brick818 {
+    animation-delay: 4.22s
+}
+
+#brick819 {
+    animation-delay: 2.79s
+}
+
+#brick820 {
+    animation-delay: 2.38s
+}
+
+#brick821 {
+    animation-delay: 3.02s
+}
+
+#brick822 {
+    animation-delay: 1.62s
+}
+
+#brick823 {
+    animation-delay: 2.07s
+}
+
+#brick824 {
+    animation-delay: 2.27s
+}
+
+#brick825 {
+    animation-delay: 0.99s
+}
+
+#brick826 {
+    animation-delay: 3.06s
+}
+
+#brick827 {
+    animation-delay: 2.20s
+}
+
+#brick828 {
+    animation-delay: 3.38s
+}
+
+#brick829 {
+    animation-delay: 3.74s
+}
+
+#brick830 {
+    animation-delay: 3.65s
+}
+
+#brick831 {
+    animation-delay: 3.44s
+}
+
+#brick832 {
+    animation-delay: 3.07s
+}
+
+#brick833 {
+    animation-delay: 2.48s
+}
+
+#brick834 {
+    animation-delay: 1.91s
+}
+
+#brick835 {
+    animation-delay: 3.01s
+}
+
+#brick836 {
+    animation-delay: 2.98s
+}
+
+#brick837 {
+    animation-delay: 4.25s
+}
+
+#brick838 {
+    animation-delay: 2.50s
+}
+
+#brick839 {
+    animation-delay: 3.79s
+}
+
+#brick840 {
+    animation-delay: 1.29s
+}
+
+#brick841 {
+    animation-delay: 3.39s
+}
+
+#brick842 {
+    animation-delay: 2.46s
+}
+
+#brick843 {
+    animation-delay: 3.15s
+}
+
+#brick844 {
+    animation-delay: 3.55s
+}
+
+#brick845 {
+    animation-delay: 1.64s
+}
+
+#brick846 {
+    animation-delay: 1.46s
+}
+
+#brick847 {
+    animation-delay: 4.33s
+}
+
+#brick848 {
+    animation-delay: 1.31s
+}
+
+#brick849 {
+    animation-delay: 0.21s
+}
+
+#brick850 {
+    animation-delay: 1.93s
+}
+
+#brick851 {
+    animation-delay: 2.05s
+}
+
+#brick852 {
+    animation-delay: 2.38s
+}
+
+#brick853 {
+    animation-delay: 1.93s
+}
+
+#brick854 {
+    animation-delay: 0.43s
+}
+
+#brick855 {
+    animation-delay: 2.17s
+}
+
+#brick856 {
+    animation-delay: 2.25s
+}
+
+#brick857 {
+    animation-delay: 2.08s
+}
+
+#brick858 {
+    animation-delay: 3.05s
+}
+
+#brick859 {
+    animation-delay: 3.52s
+}
+
+#brick860 {
+    animation-delay: 0.40s
+}
+
+#brick861 {
+    animation-delay: 3.48s
+}
+
+#brick862 {
+    animation-delay: 2.17s
+}
+
+#brick863 {
+    animation-delay: 1.99s
+}
+
+#brick864 {
+    animation-delay: 1.82s
+}
+
+#brick865 {
+    animation-delay: 4.48s
+}
+
+#brick866 {
+    animation-delay: 3.53s
+}
+
+#brick867 {
+    animation-delay: 2.04s
+}
+
+#brick868 {
+    animation-delay: 4.15s
+}
+
+#brick869 {
+    animation-delay: 1.52s
+}
+
+#brick870 {
+    animation-delay: 1.43s
+}
+
+#brick871 {
+    animation-delay: 2.40s
+}
+
+#brick872 {
+    animation-delay: 2.92s
+}
+
+#brick873 {
+    animation-delay: 2.57s
+}
+
+#brick874 {
+    animation-delay: 1.77s
+}
+
+#brick875 {
+    animation-delay: 2.26s
+}
+
+#brick876 {
+    animation-delay: 1.59s
+}
+
+#brick877 {
+    animation-delay: 0.60s
+}
+
+#brick878 {
+    animation-delay: 3.15s
+}
+
+#brick879 {
+    animation-delay: 2.01s
+}
+
+#brick880 {
+    animation-delay: 2.16s
+}
+
+#brick881 {
+    animation-delay: 2.43s
+}
+
+#brick882 {
+    animation-delay: 3.12s
+}
+
+#brick883 {
+    animation-delay: 2.11s
+}
+
+#brick884 {
+    animation-delay: 3.25s
+}
+
+#brick885 {
+    animation-delay: 3.65s
+}
+
+#brick886 {
+    animation-delay: 1.85s
+}
+
+#brick887 {
+    animation-delay: 2.86s
+}
+
+#brick888 {
+    animation-delay: 2.02s
+}
+
+#brick889 {
+    animation-delay: 2.63s
+}
+
+#brick890 {
+    animation-delay: 1.84s
+}
+
+#brick891 {
+    animation-delay: 3.79s
+}
+
+#brick892 {
+    animation-delay: 2.47s
+}
+
+#brick893 {
+    animation-delay: 3.34s
+}
+
+#brick894 {
+    animation-delay: 2.88s
+}
+
+#brick895 {
+    animation-delay: 1.75s
+}
+
+#brick896 {
+    animation-delay: 4.07s
+}
+
+#brick897 {
+    animation-delay: 2.60s
+}
+
+#brick898 {
+    animation-delay: 1.84s
+}
+
+#brick899 {
+    animation-delay: 2.34s
+}
+
+#brick900 {
+    animation-delay: 2.07s
+}
+
+#brick901 {
+    animation-delay: 3.02s
+}
+
+#brick902 {
+    animation-delay: 3.11s
+}
+
+#brick903 {
+    animation-delay: 2.35s
+}
+
+#brick904 {
+    animation-delay: 4.21s
+}
+
+#brick905 {
+    animation-delay: 2.22s
+}
+
+#brick906 {
+    animation-delay: 2.56s
+}
+
+#brick907 {
+    animation-delay: 3.41s
+}
+
+#brick908 {
+    animation-delay: 1.93s
+}
+
+#brick909 {
+    animation-delay: 1.69s
+}
+
+#brick910 {
+    animation-delay: 2.16s
+}
+
+#brick911 {
+    animation-delay: 1.60s
+}
+
+#brick912 {
+    animation-delay: 1.93s
+}
+
+#brick913 {
+    animation-delay: 1.97s
+}
+
+#brick914 {
+    animation-delay: 2.54s
+}
+
+#brick915 {
+    animation-delay: 3.98s
+}
+
+#brick916 {
+    animation-delay: 2.06s
+}
+
+#brick917 {
+    animation-delay: 3.44s
+}
+
+#brick918 {
+    animation-delay: 2.79s
+}
+
+#brick919 {
+    animation-delay: 1.47s
+}
+
+#brick920 {
+    animation-delay: 2.59s
+}
+
+#brick921 {
+    animation-delay: 1.94s
+}
+
+#brick922 {
+    animation-delay: 3.11s
+}
+
+#brick923 {
+    animation-delay: 1.57s
+}
+
+#brick924 {
+    animation-delay: 2.96s
+}
+
+#brick925 {
+    animation-delay: 1.59s
+}
+
+#brick926 {
+    animation-delay: 1.77s
+}
+
+#brick927 {
+    animation-delay: 3.09s
+}
+
+#brick928 {
+    animation-delay: 1.89s
+}
+
+#brick929 {
+    animation-delay: 1.19s
+}
+
+#brick930 {
+    animation-delay: 2.86s
+}
+
+#brick931 {
+    animation-delay: 1.78s
+}
+
+#brick932 {
+    animation-delay: 2.17s
+}
+
+#brick933 {
+    animation-delay: 3.44s
+}
+
+#brick934 {
+    animation-delay: 1.64s
+}
+
+#brick935 {
+    animation-delay: 1.69s
+}
+
+#brick936 {
+    animation-delay: 2.19s
+}
+
+#brick937 {
+    animation-delay: 2.58s
+}
+
+#brick938 {
+    animation-delay: 3.52s
+}
+
+#brick939 {
+    animation-delay: 3.02s
+}
+
+#brick940 {
+    animation-delay: 3.80s
+}
+
+#brick941 {
+    animation-delay: 2.33s
+}
+
+#brick942 {
+    animation-delay: 2.15s
+}
+
+#brick943 {
+    animation-delay: 3.69s
+}
+
+#brick944 {
+    animation-delay: 0.88s
+}
+
+#brick945 {
+    animation-delay: 1.39s
+}
+
+#brick946 {
+    animation-delay: 2.20s
+}
+
+#brick947 {
+    animation-delay: 2.74s
+}
+
+#brick948 {
+    animation-delay: 1.54s
+}
+
+#brick949 {
+    animation-delay: 1.84s
+}
+
+#brick950 {
+    animation-delay: 3.18s
+}
+
+#brick951 {
+    animation-delay: 3.25s
+}
+
+#brick952 {
+    animation-delay: 1.39s
+}
+
+#brick953 {
+    animation-delay: 1.14s
+}
+
+#brick954 {
+    animation-delay: 2.19s
+}
+
+#brick955 {
+    animation-delay: 1.53s
+}
+
+#brick956 {
+    animation-delay: 3.54s
+}
+
+#brick957 {
+    animation-delay: 2.16s
+}
+
+#brick958 {
+    animation-delay: 3.25s
+}
+
+#brick959 {
+    animation-delay: 2.17s
+}
+
+#brick960 {
+    animation-delay: 3.09s
+}
+
+#brick961 {
+    animation-delay: 1.00s
+}
+
+#brick962 {
+    animation-delay: 1.82s
+}
+
+#brick963 {
+    animation-delay: 3.23s
+}
+
+#brick964 {
+    animation-delay: 2.52s
+}
+
+#brick965 {
+    animation-delay: 2.66s
+}
+
+#brick966 {
+    animation-delay: 2.71s
+}
+
+#brick967 {
+    animation-delay: 2.88s
+}
+
+#brick968 {
+    animation-delay: 3.67s
+}
+
+#brick969 {
+    animation-delay: 3.21s
+}
+
+#brick970 {
+    animation-delay: 1.86s
+}
+
+#brick971 {
+    animation-delay: 2.69s
+}
+
+#brick972 {
+    animation-delay: 2.13s
+}
+
+#brick973 {
+    animation-delay: 1.72s
+}
+
+#brick974 {
+    animation-delay: 3.74s
+}
+
+#brick975 {
+    animation-delay: 1.50s
+}
+
+#brick976 {
+    animation-delay: 2.45s
+}
+
+#brick977 {
+    animation-delay: 1.25s
+}
+
+#brick978 {
+    animation-delay: 1.18s
+}
+
+#brick979 {
+    animation-delay: 2.33s
+}
+
+#brick980 {
+    animation-delay: 3.01s
+}
+
+#brick981 {
+    animation-delay: 3.06s
+}
+
+#brick982 {
+    animation-delay: 3.93s
+}
+
+#brick983 {
+    animation-delay: 2.15s
+}
+
+#brick984 {
+    animation-delay: 2.79s
+}
+
+#brick985 {
+    animation-delay: 2.24s
+}
+
+#brick986 {
+    animation-delay: 0.47s
+}
+
+#brick987 {
+    animation-delay: 3.03s
+}
+
+#brick988 {
+    animation-delay: 2.16s
+}
+
+#brick989 {
+    animation-delay: 2.63s
+}
+
+#brick990 {
+    animation-delay: 3.07s
+}
+
+#brick991 {
+    animation-delay: 4.43s
+}
+
+#brick992 {
+    animation-delay: 1.60s
+}
+
+
+
+#message {
+    position: absolute;
+    padding: 8px 0 0 0;
+    background-color: rgb(207, 207, 207);
+    border-radius: 50px;
+    top: 950px;
+    width: 580px;
+    height: 25px;
+    opacity: 0;
+    z-index: 20;
+    transition: 0.1s;
+}
+
+#brick992secret:hover ~#message{
+    opacity: 1;
+    transition: 1s;
+}
+
+#brick993 {
+    animation-delay: 2.30s
+}
+
+#brick994 {
+    animation-delay: 2.09s
+}
+
+#brick995 {
+    animation-delay: 1.77s
+}
+
+#brick996 {
+    animation-delay: 4.32s
+}
+
+#brick997 {
+    animation-delay: 3.25s
+}
+
+#brick998 {
+    animation-delay: 2.05s
+}
+
+#brick999 {
+    animation-delay: 0.80s
+}
+
+#brick1000 {
+    animation-delay: 2.32s
+}
+
+#brick1001 {
+    animation-delay: 2.47s
+}
+
+#brick1002 {
+    animation-delay: 1.87s
+}
+
+#brick1003 {
+    animation-delay: 0.54s
+}
+
+#brick1004 {
+    animation-delay: 1.48s
+}
+
+#brick1005 {
+    animation-delay: 2.47s
+}
+
+#brick1006 {
+    animation-delay: 2.71s
+}
+
+#brick1007 {
+    animation-delay: 3.99s
+}
+
+#brick1008 {
+    animation-delay: 1.60s
+}
+
+#brick1009 {
+    animation-delay: 2.95s
+}
+
+#brick1010 {
+    animation-delay: 3.08s
+}
+
+#brick1011 {
+    animation-delay: 3.06s
+}
+
+#brick1012 {
+    animation-delay: 2.07s
+}
+
+#brick1013 {
+    animation-delay: 3.24s
+}
+
+#brick1014 {
+    animation-delay: 2.08s
+}
+
+#brick1015 {
+    animation-delay: 3.00s
+}
+
+#brick1016 {
+    animation-delay: 2.18s
+}
+
+#brick1017 {
+    animation-delay: 2.60s
+}
+
+#brick1018 {
+    animation-delay: 2.54s
+}
+
+#brick1019 {
+    animation-delay: 2.84s
+}
+
+#brick1020 {
+    animation-delay: 2.54s
+}
+
+#brick1021 {
+    animation-delay: 2.86s
+}
+
+#brick1022 {
+    animation-delay: 4.63s
+}
+
+#brick1023 {
+    animation-delay: 0.80s
+}
