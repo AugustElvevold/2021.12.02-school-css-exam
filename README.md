@@ -4,7 +4,7 @@
 Embark on a thrilling LEGO man adventure across five pages, each filled with interactive animations and elements. Navigate from the vastness of space, through the depths of the ocean, to a vibrant beach and finally, witness an unexpected crash landing, all in the LEGO world.
 
 ## Live Preview
-Experience the adventure [here](https://augustelvevold.github.io/2021.12.02-school-css-exam/index.html).
+Experience the adventure [here](https://augustelvevold.github.io/2021.12.02-school-css-exam-lego-journey/index.html).
 
 ## Usage
 
